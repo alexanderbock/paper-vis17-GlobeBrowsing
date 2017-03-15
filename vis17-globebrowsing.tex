@@ -49,10 +49,11 @@
 \usepackage{times}                     % we use Times as the main font
 \renewcommand*\ttdefault{txtt}         % a nicer typewriter font
 \usepackage{cite}                      % needed to automatically sort the references
-\usepackage{color}
+%\usepackage{color}
+\usepackage{xcolor} % Some more colors not defined in "color" package
 % \usepackage{tabu}                      % only used for the table example
 % \usepackage{booktabs}                  % only used for the table example
-
+\usepackage{todonotes}
 
 
 
@@ -143,9 +144,9 @@
 %% Uncomment below to include a teaser figure.
 \teaser{
   \centering
-  \includegraphics[width=\linewidth]{CypressView}
-  \caption{In the Clouds: Vancouver from Cypress Mountain. Note that the teaser may not be wider than the abstract block.}
-	\label{fig:teaser}
+  %\includegraphics[width=\linewidth]{CypressView}
+  %\caption{In the Clouds: Vancouver from Cypress Mountain. Note that the teaser may not be wider than the abstract block.}
+%	\label{fig:teaser}
 }
 
 %% Uncomment below to disable the manuscript note
@@ -172,9 +173,31 @@
 
 \begin{enumerate}
 \item Visualizing space data is important because its expensive
+
+\kallecomment{What is expensive?}
+
 \item There exists a vast amount of data from Mars orbiters
+
+The amount of data currently available from various space missions is extensive. NASA alone offers more than 100 TB of images from various planetary space missions through the Planetary Data System, which is available as open data.
+
+\kallecomment{https://open.nasa.gov/blog/what-is-nasa-doing-with-big-data-today/}
+
+NASA's Viking program, launched in the year 1975, gathered important information about Mars and its surface features from the two orbiting satellites and the landers put on the surface of the planet. Today, the most important large scale imaging campaign is carried out by the Mars Reconnaissance Orbiter (MRO). This satellite carries the MARCI (Mars Color Imager), CTX (Context Camera) and HiRISE (High Resolution Imaging Science Experiment) cameras which are used to image the surface at different resolutions.
+
+\kallecomment{http://pds-imaging.jpl.nasa.gov/portal/}
+
+Our goal is to, using visualization, bring space science to the public as well as providing tools for scientists to talk about space research. Part of this relies on the ability to visualize planetary science by providing an accurate representation the globes in our solar system as well as the ability to go there virtually, using the open data available from various space missions.
+
 \item Missing spatial understanding from looking at pure images
+
+\kallecomment{any fancy visualization terms that I don't know about which can be used?}
+
+Raw image data, gathered from space missions, is easily visualized flat on screen. However, since ... 
+
 \item Contextualization of scientific data (being able to show satellites in the same context as surface features), (domes, vr headsets, etc)
+
+
+
 \item Stereoscopic reconstruction from multiple image passes
 \item What datasets are available (Viking, MOLA, CTX, HiRISE) and whats their resolutions
 \item How can this be applied to other planets
