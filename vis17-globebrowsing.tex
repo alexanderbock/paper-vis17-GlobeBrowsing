@@ -123,7 +123,24 @@
 
 %% Abstract section.
 \abstract{
--
+
+The mapping of globes, (planet, moons, and other nearly elliptical celestial objects) within our solar system is carried out by scientists of space organizations. The gathered image data are used in planning of future space missions but seldom makes its way out to the general public even though NASA provides a lot of it openly.
+
+Much has been done in the field of terrain and globe rendering and current technology relies on techniques such as out-of-core, and dynamic level of detail rendering, multi threaded data acquisition and consideration of precision limitations.
+
+These systems are often either specialized for researchers where accuracy is the main concern, or for games, where the user experience plays a major role.
+
+We present an application for visualizing the same data that space scientists analyze in the context of a virtual environment representing the space that we are exploring. Given the contextualization that the real space provides, we can model the solar system using positional data for modelling the planets' orbits together with the space probes that explores them.
+
+The main focus of this paper is to describe the combination of different datasets gathered for mapping out planet surfaces features, particularly for Mars due to the extensive amount of map data gathered by the various missions on this planet.
+
+\kallecomment{Some more on the methods then results and conclusions. Please bash my text and make it better :). Are we focusing on the right things for the abstract?}
+
+\begin{enumerate}
+
+\item Results
+\item Conclusions
+\end{enumerate}
 %
 } % end of abstract
 
@@ -242,6 +259,11 @@ The Mars Orbiter Laser Altimeter (MOLA) is an instrument on the Mars Global Surv
 Length: About 1 page
 
 \section{Related Work} \label{sec:relatedwork}
+
+Global Information Systems (GIS) relies heavily on the ability to gather, transform, and visualize data with geospatial information. Maps and DEM's are typical examples of such data and research and development of software solutions to handle different parts of GIS, such as rendering, have lead to different applications in space visualization.
+
+A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times. 
+
 \begin{enumerate}
 \item the book
 
