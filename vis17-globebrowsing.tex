@@ -134,13 +134,12 @@ We present an application for visualizing the same data that space scientists an
 
 The main focus of this paper is to describe the combination of different datasets gathered for mapping out planet surfaces features, particularly for Mars due to the extensive amount of map data gathered by the various missions on this planet.
 
-\kallecomment{Some more on the methods then results and conclusions. Please bash my text and make it better :). Are we focusing on the right things for the abstract?}
+Our rendering system combines various resolutions of local and global map datasets and presents them together in their real context. Using the Geospatial Data Abstraction Library (GDAL), we can preprocess images to match the most common cylindrical projection format used for globe rendering. A chunked level of detail approach is used for rendering tiles which are height mapped on the fly. This allows for a versatile globe renderer which can easily load new datasets without requiring preprocessing by the rendering software.
 
-\begin{enumerate}
+We can use the same data that scientists use in their research for public dissemination and present it, bundled and contextualized, using immersive rendering systems. Our software, OpenSpace, is an open source software with the goal of bringing space science to the general public.
 
-\item Results
-\item Conclusions
-\end{enumerate}
+\kallecomment{Please bash my text and make it better :). Are we focusing on the right things for the abstract?}
+
 %
 } % end of abstract
 
