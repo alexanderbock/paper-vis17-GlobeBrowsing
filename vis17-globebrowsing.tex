@@ -124,19 +124,26 @@
 %% Abstract section.
 \abstract{
 
-The mapping of the planet and moons within our solar system is carried out by space organizations such as NASA and ESA. Image data are collected by cameras on satellites and spacecrafts, and used in scientific research and in planning of future space missions. Despite the fact that NASA shares a lot of its image data openly, it seldom reaches the general public.
+The mapping of the planet and moons within our solar system is carried out by space organizations such as NASA and ESA.
+Image data are collected by cameras on satellites and spacecrafts, and used in scientific research and in planning of future space missions.
+Despite the fact that NASA shares a lot of its image data openly, it seldom reaches the general public.
 
 A lot of research has been done in terms of visualizing planetary data using terrain rendering. Current technology relies on techniques such as out-of-core, and dynamic level of detail rendering, multi threaded data acquisition and consideration of precision limitations.
 
 These systems are often either specialized for researchers where accuracy is the main concern, or for games, where the user experience plays a major role.
 
-We present an application for visualizing the same data that space scientists analyze in the context of a virtual environment representing the space that we are exploring. Given the contextualization that the real space provides, we can model the solar system using positional data for modelling the planets' orbits together with the space probes that explores them.
+We present an application for visualizing the same data that space scientists analyze in the context of a virtual environment representing the space that we are exploring.
+Given the contextualization that the real space provides, we can model the solar system using positional data for modelling the planets' orbits together with the space probes that explores them.
 
 The main focus of this paper is to describe the combination of different datasets gathered for mapping out planets' surface features, particularly Mars due to the extensive amount of map data gathered by the various missions on this planet.
 
-Our rendering system combines various resolutions of local and global map datasets and presents them together in their real context. Using the Geospatial Data Abstraction Library (GDAL), we can preprocess images to match the most common cylindrical projection format used for globe rendering. A chunked level of detail approach is used for rendering tiles which are height mapped on the fly. This allows for a versatile globe renderer which can easily load new datasets without requiring preprocessing by the rendering software.
+Our rendering system combines various resolutions of local and global map datasets and presents them together in their real context.
+Using the Geospatial Data Abstraction Library (GDAL), we can preprocess images to match the most common cylindrical projection format used for globe rendering.
+A chunked level of detail approach is used for rendering tiles which are height mapped on the fly.
+This allows for a versatile globe renderer which can easily load new datasets without requiring preprocessing by the rendering software.
 
-We can use the same data that scientists use in their research for public dissemination and present it, bundled and contextualized, using immersive rendering systems. Our software, OpenSpace, is an open source project with the goal of bringing space science to the general public.
+We can use the same data that scientists use in their research for public dissemination and present it, bundled and contextualized, using immersive rendering systems.
+Our software, OpenSpace, is an open source project with the goal of bringing space science to the general public.
 
 %
 } % end of abstract
@@ -193,15 +200,19 @@ We can use the same data that scientists use in their research for public dissem
 
 \item There exists a vast amount of data from Mars orbiters
 
-The amount of data currently available from various space missions is extensive. NASA alone offers more than 100 TB of images from various planetary space missions through the Planetary Data System, which is available as open data.
+The amount of data currently available from various space missions is extensive.
+NASA alone offers more than 100 TB of images from various planetary space missions through the Planetary Data System, which is available as open data.
 
 \kallecomment{\url{https://open.nasa.gov/blog/what-is-nasa-doing-with-big-data-today/}}
 
-NASA's Viking program, launched in the year 1975, gathered important information about Mars and its surface features from the two orbiting satellites and the landers put on the surface of the planet. Today, the most important large scale imaging campaign is carried out by the Mars Reconnaissance Orbiter (MRO). This satellite carries the MARCI (Mars Color Imager), CTX (Context Camera) and HiRISE (High Resolution Imaging Science Experiment) cameras which are used to image the surface at different resolutions.
+NASA's Viking program, launched in the year 1975, gathered important information about Mars and its surface features from the two orbiting satellites and the landers put on the surface of the planet.
+Today, the most important large scale imaging campaign is carried out by the Mars Reconnaissance Orbiter (MRO).
+This satellite carries the MARCI (Mars Color Imager), CTX (Context Camera) and HiRISE (High Resolution Imaging Science Experiment) cameras which are used to image the surface at different resolutions.
 
 \kallecomment{\url{http://pds-imaging.jpl.nasa.gov/portal/}}
 
-Our goal is to, using visualization, bring space science to the public as well as providing tools for scientists to talk about space research. Part of this relies on the ability to visualize planetary science by providing an accurate representation the globes in our solar system as well as the ability to go there virtually, using the open data available from various space missions.
+Our goal is to, using visualization, bring space science to the public as well as providing tools for scientists to talk about space research.
+Part of this relies on the ability to visualize planetary science by providing an accurate representation the globes in our solar system as well as the ability to go there virtually, using the open data available from various space missions.
 
 \item Missing spatial understanding from looking at pure images
 
@@ -211,7 +222,8 @@ Raw image data, gathered from space missions, is easily visualized flat on scree
 
 \item Contextualization of scientific data (being able to show satellites in the same context as surface features), (domes, vr headsets, etc)
 
-Using the tools that scientific data visualization allows, it is possible to get a better understanding of the space missions. By allowing contol of time flow, showing satellites and space probes in the same context as the planets, and doing this using immersive display systems gives intuitive understanding of the space around us and how scientists gather knowledge about it.
+Using the tools that scientific data visualization allows, it is possible to get a better understanding of the space missions.
+By allowing contol of time flow, showing satellites and space probes in the same context as the planets, and doing this using immersive display systems gives intuitive understanding of the space around us and how scientists gather knowledge about it.
 
 Typical examples of use cases for interactive visualization are large scale dome presentations of real time presentations, virtual reality headsets, and touch tables; where the audience can experience flight through space and time, experiencing what we currently know about the cosmos.
 
@@ -229,13 +241,16 @@ Typical examples of use cases for interactive visualization are large scale dome
 
 \kallecomment{MRO HiRISE: \url{https://astrogeology.usgs.gov/maps/mars-hirise-camera and https://astrogeology.usgs.gov/missions/mars-reconnaissance-orbiter}}
 
-The Mars Global Digital Image Mosaic (MDIM) is a global image dataset with a resolution of 256 pixels/degree. This dataset is put together from images from the Viking Orbiter imaging system. The latest version of this image mosaic, MDIM 2.1 uses ...
+The Mars Global Digital Image Mosaic (MDIM) is a global image dataset with a resolution of 256 pixels/degree.
+This dataset is put together from images from the Viking Orbiter imaging system. The latest version of this image mosaic, MDIM 2.1 uses ...
 
 \kallecomment{Mention latest coordinate system for Mars, IAU/IAG 2000 adoption.. Use of MOLA for correction etc.}
 
-The highest resolution global color mosaic available for Mars today is still composed of images from the Viking missions. The latest version, compiled by NASA AMES, is warped to match the latest grayscale MDIM 2.1 mosaic. 
+The highest resolution global color mosaic available for Mars today is still composed of images from the Viking missions.
+The latest version, compiled by NASA AMES, is warped to match the latest grayscale MDIM 2.1 mosaic. 
 
-The Mars Orbiter Laser Altimeter (MOLA) is an instrument on the Mars Global Surveyor (MGS) spacecraft. The digital elevation model (DEM) assembled from MOLA data maps each position on the globe with an offset from the Areoid, Mars' reference ellipsoid, to an average accuracy of +-3 m (ref). The dataset has a resolution of 463.0836 meters/pixel.
+The Mars Orbiter Laser Altimeter (MOLA) is an instrument on the Mars Global Surveyor (MGS) spacecraft.
+The digital elevation model (DEM) assembled from MOLA data maps each position on the globe with an offset from the Areoid, Mars' reference ellipsoid, to an average accuracy of +-3 m (ref). The dataset has a resolution of 463.0836 meters/pixel.
 
 \kallecomment{+-3 m sounds too good to be true? Should check the reference.}
 
@@ -257,9 +272,10 @@ Length: About 1 page
 
 \section{Related Work} \label{sec:relatedwork}
 
-Geographical Information Systems (GIS) relies heavily on the ability to gather, transform, and visualize data with geospatial information. Maps and DEM's are typical examples of such data and research and development of software solutions to handle different parts of GIS, such as rendering, have lead to different applications in space visualization.
+Geographical Information Systems (GIS) relies heavily on the ability to gather, transform, and visualize data with geospatial information.
+Maps and DEM's are typical examples of such data and research and development of software solutions to handle different parts of GIS, such as rendering, have lead to different applications in space visualization.
 
-A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times. 
+A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times.
 
 \begin{enumerate}
 \item the book
