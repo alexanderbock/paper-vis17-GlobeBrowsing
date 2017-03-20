@@ -290,7 +290,11 @@ Length: About 1 page
 Geographical Information Systems (GIS) relies heavily on the ability to gather, transform, and visualize data with geospatial information.
 Maps and DEM's are typical examples of such data and research and development of software solutions to handle different parts of GIS, such as rendering, have lead to different applications in space visualization.
 
+\kallecomment{Can Carter write something here? What other relevant softwares, like Google Mars, are in use?}
+
 A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times.
+
+Cozzi and Ring (ref) gives a thorough desciription of the most common methods used for globe rendering today. 
 
 \begin{enumerate}
 \item the book
@@ -307,6 +311,9 @@ Length: About 1 page\\
 Note:  The page limit was increased to 9+2 pages this year (= 9 pages of manuscript, 2 pages of references). So we should make use of this and cite the hell out of everything that's related
 
 \section{Overview} \label{sec:overview}
+
+
+
 \begin{enumerate}
   \item What are the steps to get from a satellite to 3d terrain rendering
 \begin{enumerate}
@@ -328,6 +335,8 @@ Length: About 2 pages
 Length: About 1-1.5 pages
 
 \section{Rendering System} \label{sec:renderingsystem}
+
+
 \begin{enumerate}
   \item All the steps to get from GDAL to a rendering on the screen
   
@@ -345,6 +354,29 @@ Length: About 1-1.5 pages
   \item Rendering rover locations
 \end{enumerate}
 Length: About 2-2.5 pages (fill as much as the page limit (9+2) allows)
+
+
+When the image datasets are in the format required for the renderer, there are several abstraction layers we employ to handle the out of core techniques required for rendering.
+
+Two major concepts used in the rendering system are tiles and chunks. A tile has a texture representing a geodetic area and is uniquely defined by a layer and a tile index.
+A layer works much like in image editing softwares and can have different types, analogous to blending options.
+Examples are height layers, color layers, grayscale layers or grayscale overlays.
+A tile index is defined by a level, x, and y coordinates in the chunk tree structure.
+
+The main globe model consists of a quad tree of chunks.
+The chunk renderer has access to a skirted grid (ref) which can be mapped on to a geodetic region and rendered in place using one or several layers.
+
+\subsection{From Dataset to Tile}
+
+Each layer corresponds to its own tile provider.
+A tile provider is able to initiate asynchronous calls to a tile data reader which in turn reads the image data from disk or from remote servers.
+Once the image data is ready, a tile can be created and pushed in to an in memory LRU cache so that the tile provider can return it upon request.
+If the tile is already in the cache, the tile provider simply needs to return it and update the cache upon request.
+
+\subsection{Chunk Rendering}
+
+
+
 
 \section{Conclusion} \label{sec:system}
 \begin{enumerate}
