@@ -124,7 +124,7 @@
 %% Abstract section.
 \abstract{
 
-The mapping of the planet and moons within our solar system is carried out by space organizations such as NASA and ESA.
+The mapping of the planets and moons within our solar system is carried out by space organizations such as NASA and ESA.
 Image data are collected by cameras on satellites and spacecrafts, and used in scientific research and in planning of future space missions.
 Despite the fact that NASA shares a lot of its image data openly, it seldom reaches the general public.
 
@@ -228,7 +228,7 @@ Raw image data, gathered from space missions, is easily visualized flat on scree
 Using the tools that scientific data visualization allows, it is possible to get a better understanding of the space missions.
 By allowing contol of time flow, showing satellites and space probes in the same context as the planets, and doing this using immersive display systems gives intuitive understanding of the space around us and how scientists gather knowledge about it.
 
-Typical examples of use cases for interactive visualization are large scale dome presentations of real time presentations, virtual reality headsets, and touch tables; where the audience can experience flight through space and time, experiencing what we currently know about the cosmos.
+Typical examples of use cases for interactive visualization are large scale dome presentations of real time presentations, virtual reality headsets, and touch tables; where the audience can experience flight through space and time, experiencing our current mapping of the cosmos.
 
 \item Stereoscopic reconstruction from multiple image passes
 
@@ -264,12 +264,12 @@ The digital elevation model (DEM) assembled from MOLA data maps each position on
 
 \kallecomment{Other datasets? Does ESA have Mars missions of interest?}
 
-\item How can this be applied to other planets
+\item How can this be applied to other planets, A system for enabling future research thati s correctly contextualized. What is the science question // What is the point of this
 
-\kallecomment{Applied as in how to build datasets or as in how to render it? if the latter, it shouldn't be in introduction.}
+By enabling the ability to read many types of image datasets, with global or local coverage, temporal or static, and doing so dynamically, we can generalize the technique to different globes without having a specific focus group.
+We hope that our tools can be useful both for scientists who want to present their work in a contextualized manner and for people who find interest in the subjects we discuss or want to experience the most accurate representation of standing on the surface of Mars using only real data.
 
-\item A system for enabling future research thati s correctly contextualized
-\item What is the science question // What is the point of this
+
 \end{enumerate}
 Length: About 1 page
 
@@ -280,9 +280,22 @@ Maps and DEM's are typical examples of such data and research and development of
 
 \kallecomment{Can Carter write something here? What other relevant softwares, like Google Mars, are in use?}
 
+\subsection{Rendering}
+
 A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times.
 
 Cozzi and Ring (ref) gives a thorough desciription of the most common methods used for globe rendering today. 
+
+\subsection{3D Reconstruction From Images}
+
+Adding the third dimension required for terrain rendering is most commonly carried out by rendering DTMs, also known as heigh mapping.
+Height map datasets can be generated using measured data from altimeters on the satellites, corrected to match an offset from a reference ellipsoid (ref) in the direction of the geodetic normal for every point on the surface covered by the dataset (ref).
+
+\kallecomment{Someone wants to add text about stereo reconstruction here?}
+
+\subsection{Geospatial Data Abstraction}
+
+Geospatial Data Abstraction Library (GDAL) is an open source software package and C++ library enabling re-projection and warping of map datasets and can act as a layer of abstraction between the rendering software and the many different types of map formats and projections.
 
 \begin{enumerate}
 \item the book
