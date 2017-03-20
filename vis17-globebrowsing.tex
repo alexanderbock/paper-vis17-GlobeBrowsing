@@ -42,6 +42,7 @@
 %% it is recomended to use ``\autoref{sec:bla}'' instead of ``Fig.~\ref{sec:bla}''
 \graphicspath{{figures/}{pictures/}{images/}{./}} % where to search for the images
 
+\usepackage[utf8]{inputenc}
 \usepackage{microtype}                 % use micro-typography (slightly more compact, better to read)
 \PassOptionsToPackage{warn}{textcomp}  % to address font issues with \textrightarrow
 \usepackage{textcomp}                  % use better special symbols
@@ -109,7 +110,7 @@
 \authorfooter{
 %% insert punctuation at end of each item
 \item
- Karl Bladin, Emil Axelsson, Patric Ljung, Anders Ynnerman and Erik Broberg are with Linköping University.
+ Karl Bladin, Emil Axelsson, Patric Ljung, Anders Ynnerman and Erik Broberg are with LinkÃ¶ping University.
  E-mail: \{ karl.bladin, emil.axelsson, patric.ljung, anders.ynnerman \} @liu.se, erikbr049@student.liu.se
  \item
  Carter Emmart is with American Museum of Natural History. E-mail: carter@amnh.org.
@@ -122,8 +123,7 @@
 %\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
 
 %% Abstract section.
-\abstract{
-The mapping of the planets and moons within our solar system is carried out by space organizations such as NASA and ESA.
+\abstract{The mapping of the planets and moons within our solar system is carried out by space organizations such as NASA and ESA.
 Image data are collected by instruments on satellites and spacecrafts, and used in scientific research and mission planning.
 
 While map data from space missions are often shared openly, it can be difficult for non-experts to comprehend the context of the data and understand the acquisition process.
@@ -165,7 +165,7 @@ Our work has been implemented in the open source software OpenSpace, enabling in
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
 %% please capitalize first letter and insert punctuation after last keyword
-\keywords{Radiosity, global illumination, constant time}
+\keywords{Astronomical visualization, globe rendering, space mission visualization }
 
 %% ACM Computing Classification System (CCS). 
 %% See <http://www.acm.org/class/1998/> for details.
