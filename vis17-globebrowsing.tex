@@ -123,57 +123,59 @@
 \shortauthortitle{Bladin \MakeLowercase{\textit{et al.}}: Globe Browsing}
 
 %% Abstract section.
-\abstract{We present work on tailoring and integration of multiple data handling and visualization methods to accurately and interactively contextualize geospatial data of celestial bodies.
-The primary target use is in science communication, but also communication between domain scientists is one of the use scenarios.
-Mapping of the planets and moons within our solar system is carried out by the space organizations who often share data openly for use in scientific research and mission planning.
-However, this data is, in its raw format, not accessible to non-experts, as it is difficult to grasp the context of the data and the intricate acquisition process from satellites and spacecraft. As our approach is full interactive and handles dynamic data sources, we are significantly shortening the time between discovery and dissemination of data and results.
-We describe the image acquisition, required pre-processing steps to derive a 2.5D terrain model, and a chunked level-of-detail rendering approach to enable interactive exploration of global maps as well as local high-resolution digital terrain models.
+\abstract{%
+We present work on tailoring and integration of multiple data processing and visualization methods to accurately and interactively contextualize geospatial data of celestial bodies for use in science communication and .communication between domain scientists.
+% The primary target use is in science communication, but also  is one of the use scenarios.
+Results of mapping of the planets and moons in our solar system is often shared data openly for use in scientific research and mission planning.
+However, this data is, in its raw format, not accessible to non-experts, as it is difficult to grasp the context of the data and the intricate acquisition process from satellites and spacecraft.
+As our approach is full interactive and handles dynamic data sources, we are significantly shortening the time between discovery and dissemination of data and results.
+We describe the image acquisition, required pre-processing steps to derive a 2.5D terrain, and a chunked level-of-detail rendering approach to enable the interactive exploration of global maps as well as high-resolution digital terrain models.
 One particularly interesting case is Mars as extensive amount of map data is available, gathered by the various missions of the last 40 years.
 A second case is dynamical processes, such as weather conditions on Earth, that require the support of spatio-temporal datasets.
 In addition to a visualization of the scientific results, we also provide the ability to show the ongoing data acquisition process, exemplified in the Pluto flyby by New Horizons spacecraft.
-Our work has been implemented in the open source software OpenSpace that enables interactive presentations in a range of environments such as, immersive dome theaters and virtual reality headsets.
-
+Our work has been implemented in the open source software OpenSpace that enables interactive presentations in a range of environments such as immersive dome theaters and virtual reality headsets.
+%
 % In addition, the application supports temporal datasets, where available, in order to visualize a celestial body's dynamic processes, such as weather conditions on Earth.
 % Furthermore, we interactively play back in-situ visualizations of the process for data acquisition.
-
-
+%
+%
 %We present an application where scientific mapping data of celestial bodies is contextualized in space and time to enrich the experience in public dissemination as well as to support communication between scientists.
 %In our system various types of datasets and visualization techniques are combined.
 %A chunked level-of-detail approach is used to enable interactive exploration of global maps as well as local high-resolution digital terrain models with textures and height information.
 %This is particularly interesting for Mars thanks to the extensive amount of map data gathered by the various missions to this planet.
 %Using time varying data sets, we visualize the dynamics of a celestial body, such as weather conditions on Earth.
 %Furthermore, we interactively play back in-situ visualizations of the process for data acquisition.
-
+%
 %Our work has been implemented in the open source software OpenSpace, which enables interactive presentations in immersive environments like dome theaters and virtual reality headsets.
-
-
-
-
-
+%
+%
+%
+%
+%
 %The mapping of the planets and moons within our solar system is carried out by space organizations such as NASA and ESA.
 %Image data are collected by cameras on satellites and spacecrafts, and used in scientific research and in planning of future space missions.
 %Despite the fact that NASA shares a lot of its image data openly, it seldom reaches the general public.
-
+%
 %A lot of research has been done in terms of visualizing planetary data using terrain rendering. Current technology relies on techniques such as out-of-core, and dynamic level of detail rendering, multi threaded data acquisition and consideration of precision limitations.
-
+%
 %These systems are often either specialized for researchers where accuracy is the main concern, or for games, where the user experience plays a major role.
-
+%
 %We present an application for visualizing the same data that space scientists analyze in the context of a virtual environment representing the space that we are exploring.
 %Given the contextualization that the real space provides, we can model the solar system using positional data for modelling the planets' orbits together with the space probes that explores them.
 %In a time varying visualizations we can show the dynamics of a planetary surface as well as the data collection process itself.
-
+%
 %The main focus of this paper is to describe the combination of different datasets gathered for mapping out planets' surface features. 
 % particularly Mars due to the extensive amount of map data gathered by the various missions on this planet.
-
+%
 %Our rendering system combines various resolutions of local and global map datasets and presents them together in their real context.
 %Using the Geospatial Data Abstraction Library (GDAL), we can preprocess images to match the most common cylindrical projection format used for globe rendering.
 %A chunked level of detail approach is used for rendering tiles which are height mapped on the fly.
 %This allows for a versatile globe renderer which can easily load new datasets without requiring preprocessing by the rendering software.
-
+%
 %We can use the same data that scientists use in their research for public dissemination and present it, bundled and contextualized, using immersive rendering systems.
 %Our software, OpenSpace, is an open source project with the goal of bringing space science to the general public.
-
-
+%
+%
 % The mapping of the planets and moons within our solar system is carried out by space organizations such as NASA and
 % ESA. Image data are collected by instruments on satellites and spacecrafts, and subsequently used in scientific research and mission
 % planning. While map data from space missions are often shared openly, it can be difficult for non-experts to comprehend the context of
@@ -187,7 +189,7 @@ Our work has been implemented in the open source software OpenSpace that enables
 % process for data acquisition.
 % Our work has been implemented in the open source software OpenSpace that enables interactive presentations in immersive
 % environments like dome theaters and virtual reality headsets.
-
+%
 %
 } % end of abstract
 
