@@ -102,7 +102,7 @@
 
 %% Paper title.
 
-\title{Contextualized spatio-temporal planetary surface visualization}
+\title{Globe Browsing: Contextualized Spatio-Temporal Planetary Surface Visualization}
 
 %% This is how authors are specified in the journal style
 
@@ -120,7 +120,7 @@
 }
 
 %other entries to be set up for journal
-\shortauthortitle{Bladin \MakeLowercase{\textit{et al.}}: Contextualized spatio-temporal planetary surface visualization}
+\shortauthortitle{Bladin \MakeLowercase{\textit{et al.}}: Globe Browsing: Contextualized Spatio-Temporal Planetary Surface Visualization}
 
 %\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
 
@@ -266,25 +266,34 @@ We hope that our tools can be useful both for scientists who want to present the
 Length: About 1 page
 
 \section{Related Work} \label{sec:relatedwork}
+Our application builds on previous work in the fields of geographical information systems (GIS), level-of-detail (LOD) rendering, large-scale astronomical visualization, as well as visual learning and communication.
 
-Geographical Information Systems (GIS) relies heavily on the ability to gather, transform, and visualize data with geospatial information.
+\textbf{GIS - }Geographical Information Systems relies heavily on the ability to gather, transform, and visualize data with geospatial information.
 Maps and DEM's are typical examples of such data and research and development of software solutions to handle different parts of GIS, such as rendering, have lead to different applications in space visualization.
 
 \kallecomment{Can Carter write something here? What other relevant softwares, like Google Mars, are in use?}
 
-\subsection{Rendering}
-
-A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times.
+\textbf{LOD rendering - } 
 
 Cozzi and Ring (ref) gives a thorough description of the most common methods used for globe rendering today.
 Older level of detail techniques such as Real Time Optimally Adaptive Mesh (ROAM) does not allow full GPU throughput and gives way for techniques such as chunked level of detail and geometry clipmaps.
 
 
-\subsection{3D Reconstruction From Images}
+
+
+%\subsection{Rendering}
+
+%A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times.
+
+%Cozzi and Ring (ref) gives a thorough desciription of the most common methods used for globe rendering today. 
+
+%\subsection{3D Reconstruction From Images}
 
 Adding the third dimension required for terrain rendering is most commonly carried out by rendering DTMs, also known as heigh mapping.
 Height map datasets can be generated using measured data from altimeters on the satellites, corrected to match an offset from a reference ellipsoid (ref) in the direction of the geodetic normal for every point on the surface covered by the dataset (ref).
 Height maps can also be generated using stereoscopic reconstruction.
+
+\textbf{Large scale differences - } The challenges of interactive navigation and positioning in visualizations of large scale environments have been addressed in previous work such as the ScaleGraph by Klashed et al [ref] and Dynamic Scene Graph proposed by Axelsson et al [ref].
 
 \kallecomment{Someone wants to add text about stereo reconstruction here?}
 
