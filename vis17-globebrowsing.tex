@@ -221,28 +221,18 @@ Immersive visualisation of spatio-temporal planetary surface data capture and ma
 \item There exists a vast amount of data from Mars orbiters
 
 The amount of open data currently available from space missions is extensive.
-NASA alone offers more than 100 TB of images from various planetary space missions through the Planetary Data System, which is available as open data.
-
-\kallecomment{\url{https://open.nasa.gov/blog/what-is-nasa-doing-with-big-data-today/}}
+NASA alone offers more than 100 TB of images from various planetary space missions through the Planetary Data System, which is available as open data \cite{bigdata}.
 
 NASA's Viking program, launched in the year 1975, gathered important information about Mars and its surface features from the two orbiting satellites and the landers put on the surface of the planet.
 Today, the most important large scale imaging campaign is carried out by the Mars Reconnaissance Orbiter (MRO).
-This satellite carries the MARCI (Mars Color Imager), CTX (Context Camera) and HiRISE (High Resolution Imaging Science Experiment) cameras which are used to image the surface at different resolutions.
-
-\kallecomment{\url{http://pds-imaging.jpl.nasa.gov/portal/}}
+This satellite carries the MARCI (Mars Color Imager), CTX (Context Camera) and HiRISE (High Resolution Imaging Science Experiment) cameras which are used to image the surface at different resolutions \cite{mromission}.
 
 Our goal is to bring space science to the public as well as providing tools for scientists to talk about space research.
-Part of this relies on the ability to visualize planetary science by providing an accurate representation the globes in our solar system as well as the ability to go there virtually, using the open data available from various space missions.
-
-\item Missing spatial understanding from looking at pure images
-
-\kallecomment{any fancy visualization terms that I don't know about which can be used?}
+Part of this relies on the ability to visualize planetary science by providing an accurate representation of the globes in our solar system as well as the ability to go there virtually, using the open data available from various space missions.
 
 Raw image data, gathered from space missions, are easily rendered flat on screen. Depending on usage, the images are defined in different projections.
 The ground truth is to render images in situ, to recreate the landscapes and build a virtual representation of the actual globes.
 It also gives intuitive understanding of how the data is collected by satellites such as the MRO if the images can be rendered in the right context.
-
-\item Contextualization of scientific data (being able to show satellites in the same context as surface features), (domes, vr headsets, etc)
 
 Using the tools that scientific data visualization allows, it is possible to get a better understanding of the space missions.
 By allowing contol of time flow, showing satellites and space probes in the same context as the planets, and doing this using immersive display systems gives intuitive understanding of the space around us and how scientists gather knowledge about it.
@@ -255,31 +245,14 @@ Typical examples of use cases for interactive visualization are large scale dome
 
 \item What datasets are available (Viking, MOLA, CTX, HiRISE) and whats their resolutions
 
-\kallecomment{MDIM 2.0 (references available): \url{https://astrogeology.usgs.gov/maps/mdim-2-1}}
-
-\kallecomment{Colorized Viking global: \url{https://astrogeology.usgs.gov/search/map/Mars/Viking/MDIM21/Mars_Viking_MDIM21_ClrMosaic_global_232m}}
-
-\kallecomment{MGS MOLA (references available): \url{https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m}}
-
-\kallecomment{MRO HiRISE: \url{https://astrogeology.usgs.gov/maps/mars-hirise-camera and https://astrogeology.usgs.gov/missions/mars-reconnaissance-orbiter}}
-
-The Mars Global Digital Image Mosaic (MDIM) is a global image dataset with a resolution of 256 pixels/degree.
-This dataset is put together from images from the Viking Orbiter imaging system. The latest version of this image mosaic, MDIM 2.1 uses ...
-
-\kallecomment{Mention latest coordinate system for Mars, IAU/IAG 2000 adoption.. Use of MOLA for correction etc.}
-
-The highest resolution global color mosaic available for Mars today is still composed of images from the Viking missions.
-The latest version, compiled by NASA AMES, is warped to match the latest grayscale MDIM 2.1 mosaic. 
+The Mars Global Digital Image Mosaic (MDIM) is a global image dataset with a resolution of 256 pixels/degree \cite{MDIM2.1_web}.
+The latest version of this image mosaic, MDIM 2.1 is compiled using a network of images from the Mariner 9 and Viking Orbiters with improved accuracy as a result of constraining control points from the Mars Orbiter Laser Altimeter (MOLA) data \cite{MDIM2.1}.
+The dataset is tied to the IAU/IAG 2000 coordinate system which has been adopted by the majority of Mars missions and instrument teams \cite{MDIM2.1}.
 
 The Mars Orbiter Laser Altimeter (MOLA) is an instrument on the Mars Global Surveyor (MGS) spacecraft.
-The digital elevation model (DEM) assembled from MOLA data maps each position on the globe with an offset from the Areoid, Mars' reference ellipsoid, to an average accuracy of +-3 m (ref). The dataset has a resolution of 463.0836 meters/pixel.
+The digital elevation model (DEM) assembled from MOLA data maps each position on the globe with an offset from the Areoid, Mars' reference ellipsoid, to an average horizontal accuracy of ~100 meters \cite{MOLA}. The dataset has a resolution of 463.0836 meters/pixel \cite{MOLA}.
 
-\kallecomment{+-3 m sounds too good to be true? Should check the reference.}
-
-\kallecomment{Areoid: geoid but for Mars. Areography, Martian geography.}
-
-
-
+The HiRISE Operations Center provides images from the HiRISE mission. These are grayscale images, infrared, green and blue images mapped to the red green and blue channels, stereo pairs and digital terrain models generated from stereo pairs.
 
 \kallecomment{Other datasets? Does ESA have Mars missions of interest?}
 
@@ -303,12 +276,15 @@ Maps and DEM's are typical examples of such data and research and development of
 
 A globe rendering system needs to handle out of core rendering and level of detail management to avoid flooding the data caches and rendering times.
 
-Cozzi and Ring (ref) gives a thorough desciription of the most common methods used for globe rendering today. 
+Cozzi and Ring (ref) gives a thorough description of the most common methods used for globe rendering today.
+Older level of detail techniques such as Real Time Optimally Adaptive Mesh (ROAM) does not allow full GPU throughput and gives way for techniques such as chunked level of detail and geometry clipmaps.
+
 
 \subsection{3D Reconstruction From Images}
 
 Adding the third dimension required for terrain rendering is most commonly carried out by rendering DTMs, also known as heigh mapping.
 Height map datasets can be generated using measured data from altimeters on the satellites, corrected to match an offset from a reference ellipsoid (ref) in the direction of the geodetic normal for every point on the surface covered by the dataset (ref).
+Height maps can also be generated using stereoscopic reconstruction.
 
 \kallecomment{Someone wants to add text about stereo reconstruction here?}
 
@@ -383,15 +359,17 @@ A layer works much like in image editing softwares and can have different types,
 Examples are height layers, color layers, grayscale layers or grayscale overlays.
 A tile index is defined by a level, x, and y coordinates in the chunk tree structure.
 
-The main globe model consists of a quad tree of chunks.
+The main globe model consists of a quadtree of chunks.
 The chunk renderer has access to a skirted grid (ref) which can be mapped on to a geodetic region and rendered in place using one or several layers.
 
 \subsection{From Dataset to Tile}
 
-Each layer corresponds to its own tile provider.
+Each layer corresponds to its own ``tile provider''.
 A tile provider is able to initiate asynchronous calls to a tile data reader which in turn reads the image data from disk or from remote servers.
 Once the image data is ready, a tile can be created and pushed in to an in memory LRU cache so that the tile provider can return it upon request.
 If the tile is already in the cache, the tile provider simply needs to return it and update the cache upon request.
+
+\kallecomment{Figure}
 
 \subsection{Chunk Rendering}
 
@@ -420,5 +398,31 @@ a grant from XYZ.}
 %\bibliographystyle{abbrv-doi-hyperref-narrow}
 
 \bibliography{references}
+
+\begin{thebibliography}{99}
+
+\bibitem{bigdata}
+\url{https://open.nasa.gov/blog/what-is-nasa-doing-with-big-data-today/}
+
+\bibitem{mromission}
+\url{http://pds-imaging.jpl.nasa.gov/portal/mro_mission.html}
+
+\bibitem{MDIM2.1}
+\url{https://astrogeology.usgs.gov/search/map/Research/ISPRS/ISPRS04_3006_B_Archinal}
+
+\bibitem{MDIM2.1_web}
+\url{https://astrogeology.usgs.gov/search/map/Mars/Viking/MDIM21/Mars_Viking_MDIM21_ClrMosaic_global_232m}
+
+\bibitem{MOLA}
+\url{https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m}
+
+\bibitem{HiRISE_info}
+\url{https://astrogeology.usgs.gov/maps/mars-hirise-camera}
+
+\bibitem{HiRISE_data}
+\url{http://www.uahirise.org}
+
+\end{thebibliography}
+
 \end{document}
 
