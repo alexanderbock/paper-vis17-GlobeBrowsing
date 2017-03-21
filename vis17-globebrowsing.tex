@@ -335,10 +335,19 @@ Length: About 2 pages
   \item What are the available data products
   \item Ames stereo pipeline
   \item GDAL preprocessing
-  \item WMS
+
+
+
+If the projection format of the images we want to show is not specified, either in a cylindrical projection for the globe in question, or in relation to the space craft that takes the images together with image times, we introduce a preprocessing step to get the right projection format.
+In particular, specifying a longitude-latitude projection is necessary to be able to read the map using OpenSpace.
+This is easily done by calling the command line application \texttt{gdalwarp}, with the argument \texttt{-t\_srs "+proj=longlat"}.
+
+\item WMS
 
 To standardize web requests for map data, the Open GIS Consortium (OGC) specified a web map service interface (ref) and from that, specifications of several other map service interfaces have followed.
 The most common standards are Web Map Service (WMS), Tile Map Service (TMS) and Web Map Tile Service (WMTS). Some other, more specific, examples of WMS-like services are WorldWind, VirtualEarth and AGS.
+
+Using GDAL, we load map datasets ...
   
 \end{enumerate}
 Length: About 1-1.5 pages
@@ -367,20 +376,31 @@ Length: About 2-2.5 pages (fill as much as the page limit (9+2) allows)
 
 When the image datasets are in the format required for the renderer, there are several abstraction layers we employ to handle the out of core techniques required for rendering.
 
-Two major concepts used in the rendering system are tiles and chunks. A tile has a texture representing a geodetic area and is uniquely defined by a layer and a tile index.
-A layer works much like in image editing softwares and can have different types, analogous to blending options.
-Examples are height layers, color layers, grayscale layers or grayscale overlays.
+A renderable globe is an entity in the scene graph structure in OpenSpace.
+It consists of a reference ellipsoid definition, a layer manager and a chunked LOD globe.
+A layer works much like in image editing softwares and belongs to a specific layer group, these are analogous to blending options.
+Examples of layer groups are: height layers, color layers, grayscale layers or grayscale overlays.
+The chunked LOD globe takes care of updating the chunk tree and evaluating the levels of its nodes.
+It also performs chunk culling as well as rendering of individual chunks.
+The chunk renderer has access to a skirted grid (ref) which can be mapped on to a geodetic region and rendered in place using one or several layers for texturing or height mapping.
+
+Other than chunks, a very important concept in the rendering system is the tile.
+A tile has a texture representing a geodetic area and is uniquely defined by a layer and a tile index.
 A tile index is defined by a level, x, and y coordinates in the chunk tree structure.
 
-The main globe model consists of a quadtree of chunks.
-The chunk renderer has access to a skirted grid (ref) which can be mapped on to a geodetic region and rendered in place using one or several layers.
-
-\subsection{From Dataset to Tile}
+\subsection{Reading and Tiling Image Data}
 
 Each layer corresponds to its own ``tile provider''.
-A tile provider is able to initiate asynchronous calls to a tile data reader which in turn reads the image data from disk or from remote servers.
-Once the image data is ready, a tile can be created and pushed in to an in memory LRU cache so that the tile provider can return it upon request.
+A tile provider is able to initiate asynchronous calls to a raw tile data reader which in turn reads the image data from disk or from remote servers.
+The raw tile data reader takes as input a tile index and outputs a raw tile that covers the given geographic area with pixels.
+Once the image data is ready, a tile can be created on the main thread, uploaded to GPU memory, and pushed in to an in memory LRU cache so that the tile provider can return it upon request.
 If the tile is already in the cache, the tile provider simply needs to return it and update the cache upon request.
+
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=0.5\textwidth]{figures/tile_pipeline.png}
+  \caption{Tile pipeline.}
+\end{figure}
 
 \kallecomment{Figure}
 
