@@ -349,26 +349,30 @@ Note:  The page limit was increased to 9+2 pages this year (= 9 pages of manuscr
 
 \alexcomment{Length: About 2 pages}
 
+Blahablaha
+
 \begin{figure}[h]
   \centering
     \includegraphics[width=0.5\textwidth]{figures/globe_browsing_data.png}
   \caption{Overview of data flow.}
 \end{figure}
 
-\begin{enumerate}
-  \item What are the steps to get from a satellite to 3d terrain rendering
-\begin{enumerate}
-  \item Acquision (MRO information)
-  \item Processing (AMES Stereo pipeline, ..., GDAL)
-  \item Rendering (Globebrowsing)
-\end{enumerate}
-  \item short descriptions for each
-\end{enumerate}
+For versatility we choose to standardize the use of a specific georeferenced map projection format; namely the equirectangular geographic projection, also know as simple cylindrical projection.
+This is by far the most commonly supported format used for unprojection of globes.
+We want to be able to read as many datasets as possible and avoid heavy preprocessing steps such as reprojection and the need of storing terabytes of reprojected map data.
+The geographic projection suffers from a couple of issues near the poles such as oversampling and polar pinching so our globe rendering system works best for regions farther from the poles.
+
+The main task of the acquision process is to gather data and project it to the commonly used geographic format.
+
+\kallecomment{MRO -> image datasets}
+
+\kallecomment{image datasets -> DTM (stereo pipeline)}
+
+\kallecomment{reprojection (GDAL)}
 
 \kallecomment{Describe this:}
 
 Image data in some projection format $->$(project)$->$ image data in lonlat projection $->$(render on ellipsoid)$->$ image data ``in-situ'', rendered globe
-
 
 \section{Image Acquisition and Processing} \label{sec:imageacquisitionprocessing}
 \begin{enumerate}
@@ -376,7 +380,6 @@ Image data in some projection format $->$(project)$->$ image data in lonlat proj
   \item What are the available data products
   \item Ames stereo pipeline
   \item GDAL preprocessing
-
 
 
 If the projection format of the images we want to show is not specified, either in a cylindrical projection for the globe in question, or in relation to the space craft that takes the images together with image times, we introduce a preprocessing step to get the right projection format.
