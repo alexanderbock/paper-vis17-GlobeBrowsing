@@ -450,8 +450,18 @@ If the tile is already in the cache, the tile provider simply needs to return it
 Given a valid chunk tree, each chunk needs to be rendered individually.
 We employ two different types of rendering techniques to account for both accuracy and precision.
 \subsubsection{Model Space Rendering}
-Using the inverse projection \kallecomment{need to define the inverse projection in overview}, vertices of a given chunk 
+Using the inverse projection \kallecomment{need to define the inverse projection in overview}, vertices of a given chunk are unprojected from the georeferenced latitude-longitude projection to the model space of the globe.
+
+This unprojection is performed in single precision on the GPU and results in the chunk being accurately mapped to the curvature of the reference ellipsoid.
+ 
 \subsubsection{Camera Space Rendering}
+
+The same unprojection can be performed in double precision on the CPU for the four corner points of the chunk.
+These points are then transformed to camera space in double precision where they are then casted to single precision and uploaded to the GPU.
+Now the rest of the vertices representing the chunk can be bilinearly interpolated for the chunk to be mapped on to the reference ellipsoid.
+
+This method results in high precision rendering due to the origin practically being moved to the center of the camera.
+The accuracy is lower however since the chunks are approximated as flat surfaces as a result of the bilinear interpolation.
 
 \section{Conclusion} \label{sec:system}
 \begin{enumerate}
