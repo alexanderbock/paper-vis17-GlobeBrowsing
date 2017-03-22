@@ -296,6 +296,8 @@ Length: About 1 page
 \section{Related Work} \label{sec:relatedwork}
 Our application builds on previous work in the fields of geographical information systems (GIS), level-of-detail (LOD) rendering, large-scale astronomical visualization, as well as visual learning and communication.
 
+\kallecomment{Not sure how much (if anything) we should talk about GIS. Any ideas?}
+
 \textbf{GIS - }Geographical Information Systems relies heavily on the ability to gather, transform, and visualize data with geospatial information.
 Maps and DEM's are typical examples of such data and research and development of software solutions to handle different parts of GIS, such as rendering, have lead to different applications in space visualization.
 
@@ -345,7 +347,13 @@ Note:  The page limit was increased to 9+2 pages this year (= 9 pages of manuscr
 
 \section{Overview} \label{sec:overview}
 
+\alexcomment{Length: About 2 pages}
 
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=0.5\textwidth]{figures/globe_browsing_data.png}
+  \caption{Overview of data flow.}
+\end{figure}
 
 \begin{enumerate}
   \item What are the steps to get from a satellite to 3d terrain rendering
@@ -361,7 +369,6 @@ Note:  The page limit was increased to 9+2 pages this year (= 9 pages of manuscr
 
 Image data in some projection format $->$(project)$->$ image data in lonlat projection $->$(render on ellipsoid)$->$ image data ``in-situ'', rendered globe
 
-Length: About 2 pages
 
 \section{Image Acquisition and Processing} \label{sec:imageacquisitionprocessing}
 \begin{enumerate}
@@ -389,31 +396,14 @@ Length: About 1-1.5 pages
 
 \section{Rendering System} \label{sec:renderingsystem}
 
-
-\begin{enumerate}
-  \item All the steps to get from GDAL to a rendering on the screen
-  
-  \kallecomment{Tile pipeline as described in our thesis (but shorter).}
-  
-  \kallecomment{Abstraction layers.}
-  
-  \kallecomment{Rendering chunks. Shader implementation on a high level.}
-  
-  \kallecomment{Atmosphere?!?!!?!}
-  
-  \item Stereoscopic rendering
-  \item Dome rendering
-  \item Different resolution levels
-  \item Rendering rover locations
-\end{enumerate}
-Length: About 2-2.5 pages (fill as much as the page limit (9+2) allows)
+\alexcomment{Length: About 2-2.5 pages (fill as much as the page limit (9+2) allows)}
 
 
-When the image datasets are in the format required for the renderer, there are several abstraction layers we employ to handle the out of core techniques required for rendering.
+When the image datasets are in the format required for the renderer, that is defined in a latitude-longitude georeferenced projection, there are several abstraction layers we employ to handle the out of core techniques required for rendering.
 
 \kallecomment{Unsure about the detail level to put on describing things related to the structuring and ownerships of classes etc...}
 
-A renderable globe is an entity in the scene graph structure in OpenSpace.
+A renderable globe is an entity in the scene graph structure of OpenSpace.
 It consists of a reference ellipsoid definition, a layer manager and a chunked LOD globe.
 A layer works much like in image editing softwares and belongs to a specific layer group, these are analogous to blending options.
 Examples of layer groups are: height layers, color layers, grayscale layers or grayscale overlays.
@@ -443,13 +433,30 @@ If the tile is already in the cache, the tile provider simply needs to return it
 
 \subsection{Chunk Tree}
 
+We employ a similar chunk tree structure as described by Cozzi and Ring. (ref).
+However, our version is more light weight as it does not require vertex data to be stored for every chunk node.
+There are three important concepts used to update the chunk tree to achieve the highest level of detail where it is needed and avoid it where it will not make a visual difference:
 
+\paragraph{Chunk selection} is the act of choosing whether a chunk wants to split or merge.
+The evaluation is done either depending solely on the distance from the camera to the closest point on the chunk or by an approximation of the projected area of the chunk on a sphere around the camera.
+
+\paragraph{Level limitation} is used in case a specific tile dataset does not contain any higher resolution tiles.
+ To avoid unnecessary splits of chunk nodes, they should not split unless there is any higher resolution data available.
+
+\paragraph{Chunk culling} is the act of testing every chunk if it needs to be rendered or if it is invisible.
+Chunks that are behind the horizon of the globe can be culled.
+So can chunks that are outside of the camera frustum.
 
 \subsection{Chunk Rendering}
 
 Given a valid chunk tree, each chunk needs to be rendered individually.
+The downside of using a light weight chunk representation is that we are limited to the use of height mapping for vertex positioning which is done on the fly in the vertex shader.
+This, however saves us from preprocessing.
+This is useful since we can load height layers on demand.
 We employ two different types of rendering techniques to account for both accuracy and precision.
+
 \subsubsection{Model Space Rendering}
+
 Using the inverse projection \kallecomment{need to define the inverse projection in overview}, vertices of a given chunk are unprojected from the georeferenced latitude-longitude projection to the model space of the globe.
 
 This unprojection is performed in single precision on the GPU and results in the chunk being accurately mapped to the curvature of the reference ellipsoid.
@@ -462,6 +469,34 @@ Now the rest of the vertices representing the chunk can be bilinearly interpolat
 
 This method results in high precision rendering due to the origin practically being moved to the center of the camera.
 The accuracy is lower however since the chunks are approximated as flat surfaces as a result of the bilinear interpolation.
+
+\subsubsection{Combination}
+
+To achieve both the accuracy required for the curvature and the precision required for rendering small chunks near the surface, we simply use a cutoff level where chunks below it that are big and need to be curved are rendered with the model space method and all smaller chunks which are better approximated as flat surfaces are rendered with the camera space method.
+
+\subsubsection{Fragment Blending}
+
+To account for versatility and seamless level switching we perform three different types of fragment blending:
+
+\paragraph{Layer group blending} is performed so that many different layer groups can be blended together.
+One important example is the use of grayscale overlays over color layers.
+The grayscale overlay layer group is used to sample the underlying color (hue and saturation) and setting the lightness (value) according to the value of the grayscale overlays.
+
+\paragraph{Layer blending} is performed so that many layers of the same layer group can be rendered together.
+One example is if an overlying layer contains non unit alpha values or the ability to fade between layers using an opacity setting.
+
+\paragraph{Level blending} is performed to achieve smooth level switching.
+An interpolation parameter is calculated for each fragment depending on its distance to the camera.
+This interpolation parameter is used to interpolate between the tile of the current chunk level and the corresponding tiles of the two following lower level tiles.
+
+\subsection{Rover Locations}
+\kallecomment{In case we get something to show in time}
+
+\subsection{Atmosphere}
+\kallecomment{Or not...?}
+
+\subsection{Milti Display Systems Rendering}
+\kallecomment{Clustered rendering, dome rendering, stereoscopic rendering}
 
 \section{Conclusion} \label{sec:system}
 \begin{enumerate}
