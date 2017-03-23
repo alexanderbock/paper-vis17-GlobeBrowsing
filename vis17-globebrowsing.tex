@@ -393,12 +393,16 @@ If the projection format of the images we want to show is not specified, either 
 In particular, specifying a longitude-latitude projection is necessary to be able to read the map using OpenSpace.
 This is easily done by calling the command line application \texttt{gdalwarp}, with the argument \texttt{-t\_srs "+proj=longlat"}.
 
+Sometimes, depending on the dataset we want to render, we want the ability to mask out certain values, transform them, or respecify formats or datatypes.
+This can be useful when reading local DTM patches which need to match the underlying height layer.
+We use a GDAL feature called virtual datasets which adds an abstraction layer between the actual dataset and the data that comes out when reading using GDAL.
+
 \item WMS
 
 To standardize web requests for map data, the Open GIS Consortium (OGC) specified a web map service interface (ref) and from that, specifications of several other map service interfaces have followed.
 The most common standards are Web Map Service (WMS), Tile Map Service (TMS) and Web Map Tile Service (WMTS). Some other, more specific, examples of WMS-like services are WorldWind, VirtualEarth and AGS.
 
-Using GDAL, we load map datasets ...
+Again using GDAL, we read WMS datasets from remote servers which are specified in the equirectangular geographic projection format.
   
   \item Spice + raw images to lat long \emilcomment{todo.}
 \end{enumerate}
