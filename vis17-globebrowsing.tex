@@ -471,7 +471,7 @@ We employ two different types of rendering techniques to account for both accura
 
 \subsubsection{Model Space Rendering}
 
-Using the inverse projection \kallecomment{need to define the inverse projection in overview}, vertices of a given chunk are unprojected from the georeferenced latitude-longitude projection to the model space of the globe.
+Using the inverse projection $P^{-1}$, vertices of a given chunk are unprojected from the georeferenced projection to the model space of the globe.
 
 This unprojection is performed in single precision on the GPU and results in the chunk being accurately mapped to the curvature of the reference ellipsoid.
  
@@ -486,7 +486,7 @@ The accuracy is lower however since the chunks are approximated as flat surfaces
 
 \subsubsection{Combination}
 
-To achieve both the accuracy required for the curvature and the precision required for rendering small chunks near the surface, we simply use a cutoff level where chunks below it that are big and need to be curved are rendered with the model space method and all smaller chunks which are better approximated as flat surfaces are rendered with the camera space method.
+To achieve both the accuracy required for the curvature and the precision required for rendering small chunks near the surface, we simply use a cutoff level where chunks below it that are big, and need to be curved are rendered with the model space method and all smaller chunks, which are better approximated as flat surfaces, are rendered with the camera space method.
 
 \subsubsection{Fragment Blending}
 
@@ -504,6 +504,12 @@ An interpolation parameter is calculated for each fragment depending on its dist
 This interpolation parameter is used to interpolate between the tile of the current chunk level and the corresponding tiles of the two following lower level tiles.
 
 \subsection{Time Varying Datasets}
+
+Rendering time varying layers works less like a streaming process and more like a time interval process.
+A specific, ``temporal'' tile provider has the ability to create its own tile providers, where each one corresponds to its own time interval.
+When the global time of the software gets to a different time interval, the temporal tile provider will start instantiating tile reading calls to a different tile provider corresponding to that interval.
+This can undoubtably lead to a lot of reading within a short amount of time so memory buffering becomes important for temporal datasets.
+In our implementation, memory buffering is a manual process of browsing the wanted data to cache it for later time scrubbing.
 
 \subsection{Rover Locations}
 \kallecomment{In case we get something to show in time}
