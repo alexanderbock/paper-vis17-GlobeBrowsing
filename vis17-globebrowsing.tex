@@ -256,7 +256,7 @@ NASA's Viking program, launched in the year 1975, gathered important information
 Today, the most important large scale imaging campaign on the planet is carried out by the Mars Reconnaissance Orbiter (MRO).
 This satellite carries the MARCI (Mars Color Imager), CTX (Context Camera) and HiRISE (High Resolution Imaging Science Experiment) cameras which are used to image the surface at different resolutions \cite{mromission}.
 
-Our goal is to bring space science to the public as well as providing tools for scientists to talk about space research.
+Our goal is to bring space science to the public as well as to provide tools for scientists to talk about space research.
 Part of this relies on the ability to visualize planetary science by providing an accurate representation of the globes in our solar system as well as the ability to go there virtually, using the open data available from various space missions.
 
 Raw image data, gathered from space missions, are easily rendered flat on screen. Depending on usage, the images are defined in different projections.
@@ -279,11 +279,13 @@ The latest version of this image mosaic, MDIM 2.1 is compiled using a network of
 The dataset is tied to the IAU/IAG 2000 coordinate system which has been adopted by the majority of Mars missions and instrument teams \cite{MDIM2.1}.
 
 The Mars Orbiter Laser Altimeter (MOLA) is an instrument on the Mars Global Surveyor (MGS) spacecraft.
-The digital elevation model (DEM) assembled from MOLA data maps each position on the globe with an offset from the Areoid, Mars' reference ellipsoid, to an average horizontal accuracy of ~100 meters \cite{MOLA}. The dataset has a resolution of 463.0836 meters/pixel \cite{MOLA}.
+The digital elevation model (DEM), assembled from MOLA data, maps each position on the globe with an offset from the Areoid, Mars' reference ellipsoid, to an average horizontal accuracy of ~100 meters \cite{MOLA}. The dataset has a resolution of 463.0836 meters/pixel \cite{MOLA}.
 
 The HiRISE Operations Center provides images from the HiRISE mission. These are grayscale images, infrared, green and blue images mapped to the red green and blue channels, stereo pairs and digital terrain models generated from stereo pairs.
 
 \kallecomment{Other datasets? Does ESA have Mars missions of interest?}
+
+\kallecomment{GIBS temporal datasets}
 
 \item How can this be applied to other planets, A system for enabling future research thati s correctly contextualized. What is the science question // What is the point of this
 
@@ -349,7 +351,7 @@ Note:  The page limit was increased to 9+2 pages this year (= 9 pages of manuscr
 
 \alexcomment{Length: About 2 pages}
 
-Blahablaha
+\kallecomment{Describe figure shortly:}
 
 \begin{figure}[h]
   \centering
@@ -357,12 +359,17 @@ Blahablaha
   \caption{Overview of data flow.}
 \end{figure}
 
+\kallecomment{Image (obviously) needs to be updated. Also some rearrangements might be needed. Like better define what part is the actual "acquisition process".}
+
 For versatility we choose to standardize the use of a specific georeferenced map projection format; namely the equirectangular geographic projection, also know as simple cylindrical projection.
 This is by far the most commonly supported format used for unprojection of globes.
 We want to be able to read as many datasets as possible and avoid heavy preprocessing steps such as reprojection and the need of storing terabytes of reprojected map data.
 The geographic projection suffers from a couple of issues near the poles such as oversampling and polar pinching so our globe rendering system works best for regions farther from the poles.
 
 The main task of the acquision process is to gather data and project it to the commonly used geographic format.
+
+Once the image data is in the correct georeferenced coordinate system, the renderer takes care of unprojecting the map to result it the correct mapping of the globe.
+This is done using an inverse projection $(x,y,z)^T = P^{-1}(\phi, \theta)$ which maps each geodetic cooridnate defined by a latitude ($\phi$), and a longitude ($\theta$) to a Cartesian coordinate on the surface of the ellipsoid in the model space of the globe (ref either globe book or master thesis).
 
 \kallecomment{MRO -> image datasets}
 
@@ -491,6 +498,8 @@ One example is if an overlying layer contains non unit alpha values or the abili
 \paragraph{Level blending} is performed to achieve smooth level switching.
 An interpolation parameter is calculated for each fragment depending on its distance to the camera.
 This interpolation parameter is used to interpolate between the tile of the current chunk level and the corresponding tiles of the two following lower level tiles.
+
+\subsection{Time Varying Datasets}
 
 \subsection{Rover Locations}
 \kallecomment{In case we get something to show in time}
