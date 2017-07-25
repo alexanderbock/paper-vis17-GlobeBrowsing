@@ -62,6 +62,7 @@
 \usepackage[]{algorithm2e}
 \usepackage{textgreek}
 \usepackage{tikz, pgfplots}
+\usepackage{gensymb}
 
 \newcommand{\kallecomment}[1]{\textbf{[-Kalle-~}
     \textcolor{orange}{#1}
@@ -160,7 +161,7 @@ The first case addresses high-resolution map data on the surface of Mars.
 A second case is showing dynamic processes, such as high-resolution, concurrent weather conditions on Earth that require temporal datasets.
 As a final example we use data from the New Horizons spacecraft which acquired images during a single flyby of Pluto.
 We visualize the acquisition process as well as the resulting surface data.
-Our work has been implemented in the OpenSpace software, which enables interactive presentations in a range of environments such as immersive dome theaters and virtual reality headsets.
+Our work has been implemented in the OpenSpace software, which enables interactive presentations in a range of environments such as immersive dome theaters, interactive touch tables, and virtual reality headsets.
 
 %
 % In addition, the application supports temporal datasets, where available, in order to visualize a celestial body's dynamic processes, such as weather conditions on Earth.
@@ -238,7 +239,7 @@ Our work has been implemented in the OpenSpace software, which enables interacti
 %% Uncomment below to include a teaser figure.
 \teaser{
   \centering
-  \includegraphics[width=\linewidth, height=0.35\linewidth]{figures/teaser2.jpg}
+  \fbox{\includegraphics[width=\linewidth, height=0.35\linewidth]{figures/teaser2.jpg}}
   %\includegraphics[width=\linewidth]{CypressView}
   %\caption{In the Clouds: Vancouver from Cypress Mountain. Note that the teaser may not be wider than the abstract block.}
 %	\label{fig:teaser}
@@ -280,14 +281,14 @@ Our work has been implemented in the OpenSpace software, which enables interacti
 
 Throughout history, the study of celestial bodies orbiting our Sun has always intrigued mankind and played a central role in mythology and culture, and contributed to the scientific discovery of the fundamental laws of physics.
 Since the invention of the telescope in the 17\dsup{th} century, our knowledge of the planets and other celestial bodies in our solar system has grown at an ever-increasing rate.
-The quest for more knowledge made a leap forward in 1962 when Mariner 2 flew by Venus and paved the path for a long-term, and still ongoing, systematic mapping of the solar system by spacecraft flying by or orbiting objects of interest.
-Another landmark in the exploration of the solar system was the \emph{National Aeronautics and Space Administration's} (NASA's) Viking program, launched in the year 1975, which gathered important information about Mars and its surface features from the two orbiting satellites and the landers put on the surface of the planet.
+The quest for more knowledge made a leap forward in 1962 when \emph{National Aeronautics and Space Administration's} (NASA's) Mariner 2 flew by Venus and paved the path for a long-term, and still ongoing, systematic mapping of the solar system by spacecraft flying by or orbiting objects of interest.
+Another landmark in the exploration of the solar system was the Viking program, launched in the year 1975, which gathered important information about Mars and its surface features from the two orbiting satellites and the landers put on the surface of the planet.
 
 New Horizons' Pluto flyby in 2015 is yet another milestone as Pluto was the last planet\footnote{When New Horizons was launched in 2006, Pluto was still defined as a planet. It has since been reclassified as a dwarf planet.} to be visited by a space probe. As a consequence of the spacecraft-based exploration of the solar system we now have detailed surface data from a range of celestial bodies orbiting the sun, including some located in the most remote places of the solar system. 
 
 \begin{figure*}
 \includegraphics[width=\linewidth]{figures/overview.pdf}
-\caption{Illustration of the processing pipeline of the presented application. Raw images acquired from spacecraft can be used as-is, by utilizing orientation information, and projecting images directly onto celestial bodies, or, they can be processed and made available as online global map resources. Our system supports both approaches, as in the cases with Pluto flyby of New Horizons and the several missions to Mars. This puts high demands on the system to interactively render high-resolution images as well as reducing the time from image acquisition to dissemination.}\vspace{-3mm}
+\caption{Illustration of the processing pipeline of the presented application. Raw images acquired from spacecraft can be used as-is, by utilizing orientation information, and projecting images directly onto celestial bodies, or, they can be processed and made available as online global map resources. Our system supports both approaches, as in the cases with the Pluto flyby of New Horizons and the several missions to Mars. This puts high demands on the system to interactively render high-resolution images as well as reducing the time from image acquisition to dissemination.}\vspace{-3mm}
 
 \label{fig:procpipe}
 \end{figure*}
@@ -349,7 +350,7 @@ Our contributions can be summarized as:
     	\fbox{\includegraphics[width=\linewidth, height=0.6\linewidth]{figures/pluto_nh.png}}
       \caption{Image acquisition on Pluto}
     \end{subfigure}
-    \caption{Our system demonstrated with the three described scenarios. a) Light toned mounds in Ganges Chasma on Mars using a local HiRISE patch with 25\,cm resolution and MOLA elevation with a global mosaic of CTX images and a custom global color basemap. b) The top row shows Earth reflectance animated over three days in June 2017. The color layer is a corrected reflectance global map taken by the VIIRS satellite. The bottom row shows the difference in maximum air temperature between June 1985 and 2015. Both layers have daily coverage provided by NASA GIBS. c) New Horizons image campaign of the Pluto system. The image shows Pluto and its moon Charon with the view frustums of New Horizons' instruments. These scenarios are used in public presentations to explain their respective scientific discoveries to public audiences.}\vspace{-3mm}
+    \caption{Our system demonstrated with the three described scenarios. a) Light toned mounds in Ganges Chasma on Mars using a local HiRISE patch with 25\,cm resolution and MOLA elevation with a global mosaic of CTX images and a global color basemap. b) The top row shows Earth reflectance animated over three days in June 2017. The color layer is a corrected reflectance global map taken by the VIIRS satellite. The bottom row shows the difference in maximum air temperature between June 1985 and 2015. Both layers have daily coverage provided by NASA GIBS. c) New Horizons image campaign of the Pluto system. The image shows Pluto and its moon Charon with the view frustum of New Horizons' LORRI instrument. These scenarios are used in public presentations to explain their respective scientific discoveries to public audiences.}\vspace{-3mm}
     \label{fig:scenarios}
 \end{figure*}
 
@@ -375,7 +376,7 @@ The presented application builds on technologies and methods spreading over four
 \noindent\textbf{Science communication} ---
 Visual communication and the use of animations and interactive techniques through computer graphics are at the core of communicating scientific findings and contextualizing information. It enables a wide appeal across ages and cultures.
 Virtual reality environments such as planetariums~\cite{magnor2010progress, liu20013} have always been in the focus of educators, but a shift towards supporting data inspection on consumer grade hardware is ongoing~\cite{nakasone2009astrosim}.
-Notable examples of applications in which large scale-differences are visualized include movie productions, a classic example is \emph{Powers of Ten} by Eames~\cite{powersOfTen} from 1977, but also include current interactive software packages such as Uniview~\cite{KHECY10}, DigiStar~\cite{ES16}, and DigitalSky~\cite{Sky16}, which are all based on curated datasets containing information about our universe~\cite{abbott2006digital}. 
+Notable examples of applications in which large scale-differences are visualized include movie productions, a classic example is \emph{Powers of Ten} by Eames~\cite{powersOfTen} from 1977, but also include current interactive software packages such as Uniview~\cite{KHECY10}, DigiStar~\cite{ES16}, and DigitalSky~\cite{Sky16}, which are all based on curated datasets containing information about our Universe~\cite{abbott2006digital}. 
   %Another more recent effort by Weiskopf~\etal~\cite{weiskopf2006explanatory} aims at an explanation of the special and general relativity.
 
 Recent advances in graphics hardware and processing power in consumer hardware has enabled a broad use of actual scientific data in applications aimed for science communication for the public at science centers and elsewhere.
@@ -390,18 +391,20 @@ In our presented work we use the Dynamic Scene Graph, proposed by Axelsson \etal
 %There are several other contributions to the visualization field with astrophysics as its motivation such as the work on visualization on relativity by Weiskopf~\etal~\cite{weiskopf2005visualization} and the multiwavelength data visualization by Li~\etal~\cite{li2008visualizing}. An examples of how visualization has played a documented role in the scientific exploration is the work on interactive visualization of galaxy surveys by Punzo~\etal~\cite{punzo2015role}.
 
 %%% End of paste from Alex, start of Alex's previous notes.
-Relevant to the here presented work are a number of freely available astronomical software packages, such as, Eyes on the Solar System by NASA~\cite{hussey2010eyes}, also tools for planetary rendering in free software such as Blender~\cite{kent2013visualizing, naiman2016astroblend} can provide engaging experiences for a wide range of users. These solutions are focusing on general astronomical visualization and do not provide the out-of-core level-of-detail surface rendering required to visualize globes in high detail. Another related astrovisualization package is \emph{world wide telescope} (WWT) which brings together many data sources into a unified environment \cite{ali2011online, goodman2012worldwide}. Among these are static planetary datasets rendered using reprojection to the \emph{tessellated octahedral adaptive subdivision transform} (TOAST) format which poses issues on accuracy and in the availability of map datasets due to flat tiles and reprojection requirements \cite{berriman2017application}. The projection is therefore more suitable for sky-tessellation as it does not require an ellipsoidal model and the dataset can be maintained in the same projection format.
+Relevant to the work presented here are a number of freely available astronomical software packages, such as, Eyes on the Solar System by NASA~\cite{hussey2010eyes}, also tools for planetary rendering in free software such as Blender~\cite{kent2013visualizing, naiman2016astroblend} can provide engaging experiences for a wide range of users. These solutions are focusing on general astronomical visualization and do not provide the out-of-core level-of-detail surface rendering required to visualize globes in high detail.
+Another related astrovisualization package is the \emph{World Wide Telescope} (WWT) which brings together many data sources into a unified environment \cite{ali2011online, goodman2012worldwide}.
+Among these are static planetary datasets rendered using reprojection to the \emph{Tessellated Octahedral Adaptive Subdivision Transform} (TOAST) format which poses issues on accuracy and in the availability of map datasets due to flat tiles and reprojection requirements \cite{berriman2017application}. The projection is therefore more suitable for sky-tessellation as it does not require an ellipsoidal model and the dataset can be maintained in the same projection format.
 
 There are several ongoing efforts providing access to planetary data through interactive globe visualization softwares. Cesium by Cozzi~\cite{cozzi2013cesium} is a JavaScript library which enables globe rendering in the web browser.
 A use case is NASA's Mars Trek~\cite{marstrek} which enables the user to toggle individual map layers and browse the surface of Mars in high detail.
-Google Earth, with the Mars feature, also enables layering of many of the datasets currently available from the ongoing missions at the planet as well as the vast amount of surface data for Earth enabling education in a wide range of subjects \cite{patterson2007google}. Similarly to NASA Worldwind, which enables tools to analyze and monitor weather patterns and visualize cities and terrain as well as temporal datasets and trajectories \cite{hogan2006nasa}, the software is, however, not aimed towards contextualization by universe-sized scale differences in a single unified environment.
+Google Earth, with the Mars feature, also enables layering of many of the datasets currently available from the ongoing missions at the planet as well as the vast amount of surface data for Earth enabling education in a wide range of subjects \cite{patterson2007google}. Similarly to NASA Worldwind, which enables tools to analyze and monitor weather patterns and visualize cities and terrain as well as temporal datasets and trajectories \cite{hogan2006nasa}, the software is, however, not aimed towards contextualization by Universe-sized scale differences in a single unified environment.
 
 %\kallecomment{A bit of a hard time motivating our work over NASA Worldwind}
 %\plgrem{Does it cover more than earth?}
 %\kallecomment{Yes, it covers other planets too. You can jump between them.}
 
 Public outreach through web interfaces has increased drastically in recent years and we expect to see an increasing rate in flexibility by online software packages when reading and presenting scientific data immersively.
-Making use of the benefits of having native C++ as the core language, however, makes it possible to integrate supported libraries and software packages to enable hardware support and high performance. This is enabled using packages such as the Simple Graphics Cluster Toolkit (SGCT) \cite{sgct}, the Geospatial Data Abstraction Library (GDAL) \cite{warmerdam2008geospatial}, the SPICE toolkit \cite{acton1996ancillary} as well as APIs such as OpenGL.
+Making use of the benefits of having native C++ as the core language, however, makes it possible to integrate supported libraries and software packages to enable hardware support and high performance. This is enabled using packages such as the Simple Graphics Cluster Toolkit (SGCT) \cite{sgct}, the Geospatial Data Abstraction Library (GDAL) \cite{warmerdam2008geospatial}, the SPICE toolkit \cite{acton1996ancillary} as well as the latest features of modern graphics APIs.
 
 %\kallecomment{Is this more explicit and more positive than the previous text? (see out-commented below)}
 
@@ -426,18 +429,20 @@ Geographic projections suffers from well known issues near the poles such as ove
 
 \noindent\textbf{Level-of-detail globe rendering} ---
 LOD and multiresolution, out-of-core rendering methods are crucial when visualizing and navigating across large datasets~\cite{luebke2003level}.
-By using lower resolution representations for render distant objects, more resources can be directed towards rendering salient objects.
+By using lower resolution representations to render distant objects, more resources can be directed towards rendering salient objects.
 Cozzi and Ring~\cite{cozzi20113d} provide a comprehensive introduction to common methods used for globe rendering.
-Examples of earlier LOD techniques for globe rendering include the real-time optimally adapting meshes~(ROAM), introduced by Duchaineau~\etal~\cite{duchaineau1997roaming} with improvements made by Hwa~\etal~\cite{hwa2005real}, similar to P-BDAM by Cignono \etal~\cite{cignoni2003planet,cignoni2003bdam}. However, these methods do not allow full GPU acceleration and are thus calling for more GPU-friendly techniques, such as chunked LOD~\cite{ulrich2002rendering} and geometry clip-maps~\cite{losasso2004geometry}.
+Examples of earlier LOD techniques for globe rendering include the \emph{real-time optimally adapting meshes}~(ROAM), introduced by Duchaineau~\etal~\cite{duchaineau1997roaming} with improvements made by Hwa~\etal~\cite{hwa2005real}.
+Cignoni \etal~\cite{cignoni2003planet,cignoni2003bdam} introduced P-BDAM as a planetary scale rendering solution requiring preprocessing and geometry generation.
+Although directed towards planetary visualization specifically, there were other methods such as chunked LOD~\cite{ulrich2002rendering} and geometry clip-maps~\cite{losasso2004geometry} that better adapted to the evolution of graphics hardware, the ability to combine multiple data sources, and to generate geometry on the fly.
 
-Kooima~\etal\cite{kooima2009planetary} use a recursive subdivision of an icosahedron to construct the globe using a GPU oriented approach for vertex tessellation and texture atlases for reuse of tiles. Though the rendering algorithm nicely solves polar issues and exploit excellent triangle uniformity, limited texture sampling precision is a limitation due to the calculation of texture coordinates being performed as an inverse projection using the global transform to the space of the projected map which is either geographic or polar stereographic. Since texture sampling is performed in the fragment shader with 32 bit floating point arithmetic, the resulting texture coordinates are unable to precisely represent imagery of details smaller than 2.39 meters for an Earth sized globe \cite{kooima2009planetary}.
+Kooima~\etal\cite{kooima2009planetary} use a recursive subdivision of an icosahedron to construct the globe using a GPU oriented approach for vertex tessellation and texture atlases for reuse of tiles. Though the rendering algorithm nicely solves polar issues and exploit excellent triangle uniformity, restricted texture sampling precision is a limitation due to the calculation of texture coordinates being performed as an inverse projection using the global transform to the space of the projected map which is either geographic or polar stereographic. Since texture sampling is performed in the fragment shader with 32 bit floating point arithmetic, the resulting texture coordinates are unable to precisely represent imagery of details smaller than 2.39 meters for an Earth sized globe \cite{kooima2009planetary}.
 Spherical clip-maps, as presented by Claesen \etal \cite{clasen2006terrain}, also do not align vertex grids with the textures which makes these methods better optimized for globes with smaller scale differences than we require.
 %Other methods such as spherical clip-maps \cite{clasen2006terrain} which are optimized for smaller scale differences .
 
 Erikson \etal~\cite{Erikson:2001:HFD:364338.364376} describe a hierarchical LOD (HLOD) method generalized for three-dimensional geometries. For 2D geometries, such as chunks on a globe, each leaf node in a quad-tree corresponds to a part of the complete globe at a specific detail level.
 The quad-tree is dynamically updating its nodes by procedures known as \emph{splitting} and \emph{merging} so that high LOD is used only where it is needed.
 
-Ulrich~\cite{ulrich2002rendering} proposed a chunked LOD technique where geometry generation of each chunk requires preprocessing in which the generation process is separated from the run-time selection of detail levels. Cozzi and Ring \cite{cozzi20113d} define sub-processes of chunked LOD rendering as \emph{selection} and \emph{switching} which we adhere to. By defining the chunk geometry in the same hierarchical space as the texture tiles, texture sampling precision errors can be avoided~\cite{cozzi20113d}, see Section \ref{sec:chunkrendering}. 
+Ulrich~\cite{ulrich2002rendering} proposed a chunked LOD technique where geometry generation of each chunk requires preprocessing in which the generation process is separated from the run-time selection of detail levels. Cozzi and Ring \cite{cozzi20113d} define sub-processes of chunked LOD rendering as \emph{selection} and \emph{switching} which we adhere to. By defining the chunk geometry in the same hierarchical space as the texture tiles, texture sampling precision errors can be avoided~\cite{cozzi20113d}, see Section \ref{sec:chunkrendering}.
 
 %Early contributions by R{\"o}ttger \etal~\cite{rottger1998real} showed height field rendering using LOD methods.
 
@@ -463,7 +468,7 @@ Important optimization techniques for HLOD culling are described by Cozzi~\cite{
 %Height map datasets can be generated using measured data from altimeters on the satellites, corrected to match an offset from a reference ellipsoid in the direction of the geodetic normal for every point on the surface covered by the dataset.
 %Height maps can also be generated using stereoscopic reconstruction.
 
-\noindent\textbf{Stereoscopic reconstruction} -- Although it is only tangentially related to the system that we are proposing, it is valuable to place the many ongoing efforts in the reconstruction of geometry from multiple image sources into context. Koch \cite{Koch95} provided a framework to analyze a scene using dense depth maps and constructing triangulated surfaces from surface points. This work spawned a large body of interesting research that is outside the scope of this manuscript. Wolf \etal~\cite{wolf2000elements} provide a useful overview over the field of using photogrammetry and stereoscopic reconstruction for terrains.
+\noindent\textbf{Stereoscopic reconstruction} -- Although it is only tangentially related to the system that we are proposing, it is valuable to place the many ongoing efforts in the reconstruction of geometry from multiple image sources into context. Koch \cite{Koch95} provided a framework to analyze a scene using dense depth maps and constructing triangulated surfaces from surface points. This work spawned a large body of interesting research that are outside the scope of this manuscript. Wolf \etal~\cite{wolf2000elements} provide a useful overview over the field of using photogrammetry and stereoscopic reconstruction for terrains.
 
 %\begin{enumerate}
 %\item the book 3D Engine Design for Virtual Globes
@@ -495,7 +500,7 @@ We begin by describing the acquisition of terrain data with a high spatial resol
 %From the pictures of the first Mars missions (Mars 2, Mars 3, Mariner 9), no other planet in the solar system has gained as much attention from the different space agencies.
 So far 14 orbiters and 13 landers have been sent to our neighboring planet Mars, which is now the most intensively investigated planet beyond the Earth-Moon system.
 The most important large scale imaging campaign of Mars is carried out by the \emph{Mars Reconnaissance Orbiter} (MRO), equipped with an array of cameras, spectrometers, and radar used to image the surface at different resolutions in part for scientific discovery, as well as for the use in landing site evaluation~\cite{zurek2007overview}.
-The spacecraft is in a polar orbit which means that, as the planet rotates underneath it, the instruments will eventually be able to perform measurements at every location on the planet.
+The satellite is in a polar orbit which means that, as the planet rotates underneath it, the instruments will eventually be able to perform measurements at every location on the planet.
 
 The \emph{Mars global digital image mosaic}~(MDIM) is a global image dataset with a resolution of up to 240\,meters/pixel~\cite{archinal2003mars}.
 The latest version of this image mosaic, MDIM 2.1 is compiled from Mariner 9 and Viking images with improved accuracy as a result of constraints from the \emph{Mars Orbiter Laser Altimeter} (MOLA) data from the \emph{Mars Global Surveyor} (MGS) spacecraft.
@@ -504,7 +509,7 @@ This global height map provides sufficient resolution to serve as a background f
 
 The \emph{Context Camera}~(CTX) on the MRO provides gray-scale images of the planetary surface with about 6\,meters/pixel resolution used for providing contextual information for the other instruments observing the Martian surface~\cite{zurek2007overview}.
 NASA Ames Research Center assembled a 5\,TB global mosaic of CTX data with roughly 70\% surface coverage.
-Currently the CTX camera has mapped over 99\% of the Martian surface after the MRO has finished 50,000 orbits \cite{mroorbit}.
+The CTX camera has mapped over 99\% of the Martian surface after the MRO finished its 50,000th orbit in March 2017 \cite{mroorbit}.
 
 %\kallecomment{The reference to the 50,000 orbits is an online news article. Is it legit? And what info needs to be in the reference?} \plgrem{Yes, you can reference online material, such as a NASA website}
 
@@ -513,29 +518,29 @@ Both the CTX and HiRISE images can be used for stereoscopic reconstruction of DT
 McEwen \etal~\cite{mcewen2016people} describes the HiRISE data available online and how the public can contribute in the choice of future target locations.
 
 The main challenges in the Mars browsing application scenario arise from handling data products at various resolutions in a single context.
-This requires layer handling and the ability to seamlessly and precisely render map data out-of-core with varying levels of detail.
+This requires layer handling and the ability to seamlessly, precisely, and accurately render map data out-of-core with varying levels of detail.
 % The accuracy constraints calls for an ellipsoidal globe model where high precision rendering is needed to enable the rendering of high resolution local map and terrain data together with global datasets.
 
 \subsection{Earth} \label{sec:scenario:earth}
 %A vast number of data sources of varying spatial and temporal resolutions are available for Earth.
 Although Earth's thick atmosphere hinders the acquisition of detailed surface features, the relative ease of placing a satellite into orbit has resulted in hundreds of Earth observing satellites.
-Furthermore, a major design constraint for interplanetary spacecraft is the available bandwidth through the \emph{Deep Space Network}, limiting the amount of data that can be recovered.
-This design constraint does not apply for Earth orbiting satellites and thus enables the creation of high spatial and temporal resolution imaging; in many cases these are global images which are updated daily, but more local and higher resolution satellites exist, such as the geostationary GOES-16 which captures an image of the entire western hemisphere every 15 minutes at $10000^2$ pixels.
+Furthermore, a major design constraint for interplanetary spacecraft is the available bandwidth through the \emph{Deep Space Network} (DSN), limiting the amount of data that can be recovered.
+This design constraint does not apply for Earth orbiting satellites and thus enables the creation of high spatial and temporal resolution imaging; in many cases these are global images which are updated daily, but more local and higher resolution satellites exist, such as the geostationary GOES-16 which captures an image of the entire western hemisphere every 15 minutes at $10,000^2$ pixels.
 
 We focused on three sun-synchronous satellites, described below, returning daily images of Earth, each covering the majority of Earth's surface area.
 The satellites perform scans in a large wavelength spectrum, covering both visible light as well as infrared light ($\approx$~400\,nm~--~14\,\textmu m) and thus provide ample ground for public communication of studies of the surface, oceans, biosphere, and atmosphere.
-These datasets are available through a public interface provided by the NASA \emph{Global Imagery Browse Services}~(GIBS) that provides a unified interface to make NASA and \emph{National Oceanic and Atmospheric Administration} (NOAA) imagery available to the general public ~\cite{cechini2013expanding}.
+These datasets are available through a public interface provided by the NASA \emph{Global Imagery Browse Services}~(GIBS) that provides a unified interface to make NASA and \emph{National Oceanic and Atmospheric Administration} (NOAA) imagery available to the general public~\cite{cechini2013expanding}.
 
 The \emph{Moderate Resolution Imaging Spectroradiometer}~(MODIS) instrument has been used on the \emph{Terra} and \emph{Aqua} satellites since 1999 and 2000 respectively.
 Its resolution varies between 250\,meters/pixel and 1\,km/pixel~\cite{salomonson1989modis, justice2002overview} and a global image has been generated daily since 2000.
 The data shows land boundaries, cloud movements, the study of phytoplankton, and global temperature studies, providing a unique view into the dynamic nature of our planet over this large timespan.
 % Due to a limited field of view, the instruments do not have full coverage of the planet at the equator, leading to striped areas of missing data (see Figure?).
 
-The \emph{Visible Infrared Imaging Radiometer Suite}~(VIIRS) instrument on the Suomi NPP satellite provides similar data to the MODIS instrument and has a spatial resolution between 375 and 750 \,meter/pixel since 2012~\cite{schueler2002npoess}.
+The \emph{Visible Infrared Imaging Radiometer Suite}~(VIIRS) instrument on the Suomi NPP satellite provides similar data to the MODIS instrument and has a spatial resolution between 375 and 750 \,meters/pixel since 2012~\cite{schueler2002npoess}.
 In addition, it has a pan-chromatic Day-Night-Band that is used to capture the night side of the Earth, thus creating the ability to study the development of cities through their light emission.
 % compared to the MODIS instrument has a wider field of view, allowing a continuous coverage of the Earth at all latitudes without missing data.
 
-Another dataset is provided by the Center for Atmosphere Ocean Science at New York University and consists of radar measurements of glacial movements on Greenland. These measurements provide the velocity and height of glaciers as they carve and move into the Atlantic. This results in a time-varying DEM that changes every 15 minutes.
+Another dataset is provided by the Center for Atmosphere Ocean Science at New York University and consists of radar measurements of glacial movements on Greenland. These measurements provide the velocity and height of glaciers as they carve and move into the Atlantic. This results in a time-varying DEM with a temporal resolution of 15 minutes.
 % The main challenge in handling time varying map data is the ability to cache a buffer of data read asynchronously.
 
 \subsection{Pluto} \label{sec:scenario:pluto}
@@ -565,10 +570,10 @@ As there are two distinct pathways into the rendering component, some of the sce
 
 The following sections elaborate on the individual components of our system that provide access to a large variety of imagery sources.
 First, the different ways of \emph{Data Access}~(Section~\ref{sec:dataaccess}) in our system is described.
-Second, the \emph{Data Preparation}~(Section~\ref{sec:processing}) of acquired data is described. If the images are not available in the correct georeferenced projection format or when detailed digital terrain models have to be generated, this is a required preprocessing step.
-Third, if the scenario requires an iterative image projection and navigational data is available for specific mapping campaigns, a \emph{Real-time projection} is performed in the system as described in Section~\ref{sec:imageprojection}.
-Last, a \emph{level-of-detail surface rendering} is performed, utilizing the common projection format to result in the final three-dimensional globe representation.
-Section~\ref{sec:renderingsystem} elaborates on the details of this rendering pipeline.
+Second, we describe the the \emph{Data Preparation}~(Section~\ref{sec:processing}). If the images are not available in the correct georeferenced projection format or when detailed digital terrain models have to be generated, this is required as a preprocessing step.
+Third, we describe the use of \emph{Real-Time Image Projection}~(Section~\ref{sec:imageprojection}) used if navigational data and image times are available for specific mapping campaigns.
+%Third, if the scenario requires an iterative image projection and navigational data is available for specific mapping campaigns, \emph{Real-Time Image Projection} is performed in the system as described in Section~\ref{sec:imageprojection}.
+Lastly, in Section~\ref{sec:renderingsystem}, we describe the \emph{Rendering System} used for our chunked LOD globe representation, utilizing the common projection format to result in the final three-dimensional globe.
 
 In order to read as many data sources as possible without the need for additional reprojection steps, we chose to use a standardized common georeferenced map projection format; namely the equirectangular geographic projection~\cite{snyder1997flattening}.
 From this georeferenced coordinate system, the renderer transforms vertices to achieve the correct mapping of the globe represented by a triaxial ellipsoid.
@@ -577,11 +582,11 @@ This makes use of an inverse projection $(x,y,z)^T = P^{-1}(\phi, \theta)$ that 
 
 \subsection{Data Access} \label{sec:dataaccess}
 All of the data that can be accessed using our system has to be presented as image data.
-While this might place a constraint on the data types that can be visualized, it is in most cases possible to represent other interesting information as gray-scale images instead, for example as DTMs, where the pixel information corresponds to a height offset from a reference ellipsoid in the direction of the geodetic normal.
+While this might place a constraint on the data types that can be visualized, it is in most cases possible to represent other interesting information as gray-scale images instead, for example as DTMs, where the pixel value corresponds to a height offset from a reference ellipsoid in the direction of the geodetic normal.
 
-The most common access pattern for global image sources is a web-based LOD service called the \emph{Web Map Service}~\cite{open2006opengis, maso2010opengis}.
+The most common access pattern for global image sources is a web-based LOD service called the \emph{Web Map Service}~(WMS)~\cite{open2006opengis, maso2010opengis}.
 While there are different dialects of this standard, it is possible to query a web server for an image covering a specific portion of a celestial body. Image tiles can either be abstracted away or be part of the access depending on the exact implementation of WMS.
-The access to these online datasets in our system is unified through the use of the \emph{Geospatial Data Abstraction Library}~(GDAL)~\cite{warmerdam2008geospatial}, which enables the access to a variety of WMS dialects through a single interface, thus drastically increasing the number of datasets that are accessible.
+The access to these online datasets in our system is unified through the use of the \emph{Geospatial Data Abstraction Library}~(GDAL)~\cite{warmerdam2008geospatial}, which enables access to a variety of WMS dialects through a single interface, thus drastically increasing the number of datasets that are accessible.
 
 The GDAL interface also supports a vast amount of geospatial image data formats including common ones such as IMG, GeoTiff, JPEG2000, and Cube files along with standard image formats such as JPEG and PNG. This is useful to enable access to geographically regional datasets like the HiRISE patches made available from NASA~\cite{mcewen2016people}.
 
@@ -590,11 +595,11 @@ As these images are not georeferenced, real-time information about the spacecraf
 
 \subsection{Data Preparation} \label{sec:processing}
 For the case of global image datasets, a variety of geographic projection formats are available.
-In order to support the layering of multiple data sources for a multimodal surface visualization, we chose to employ the most widely used format, the equirectangular geographic projection, as a single unified projection format for the planets in our system.
-If a global image dataset is not provided as an equirectanglar projection, we convert the dataset using GDAL.
+In order to support the layering of multiple data sources for a multimodal surface visualization, we chose to employ the most widely used format, the equirectangular geographic projection, as a single unified projection format for the globes in our system.
+If a global image dataset is not provided in equirectanglar projection, we convert the dataset using GDAL.
 
-The HiRISE patches from NASA are referenced in meters and not degrees as required by our equirectangular long-lat rendering pipeline.
-Similarly the exemplified time varying DEMs from the Center of Atmosphere Ocean Science are provided in EPSG:6326 datum which is used by the web mercator projection.
+The HiRISE patches from NASA are referenced in meters and not degrees as required by our equirectangular latitude-longitude rendering pipeline.
+Similarly, the exemplified time varying DEMs from the Center of Atmosphere Ocean Science are provided in EPSG:6326 datum which is used by the web mercator projection.
 These are examples of datasets that need to be reprojected.
 
 Through GDAL's notion of \emph{virtual datasets}, local patches are treated as sparsely populated global maps. Virtual datasets are defined using XML specifications where properties such as data type, geographic extent, scale factors, offsets, and multiple raster bands can be specified for versatility.
@@ -604,27 +609,27 @@ If they do not possess instrumentation that produces direct measurements of heig
 The use of the NASA \emph{Ames Stereo Pipeline} (ASP) stereogrammetry software~\cite{moratto2010ames} for content creation becomes a valuable tool in our pipeline for building DTMs from stereo pairs.
 ASP works in tandem with planetary mapping methods available through the \emph{United States Geological Survey's}~(USGS), \emph{Integrated Software for Imagers and Spectrometers} (ISIS) ~\cite{gaddis1997overview}.
 CTX patches have successfully been generated from stereo pairs to match the MOLA base map of Mars~\cite{broxton2008ames, mayer2016integrated}. We exemplify this using a collection of CTX images covering West Candor Chasma in Valles Marineris on Mars.
-Furthermore, it has been shown to work on reconstructing high resolution DTM's using pairs of the HiRISE camera resulting in a resolution of about 1\,m/pixel~\cite{li2011rigorous}.
+Furthermore, it has been shown to work on reconstructing high resolution DTM's using image pairs from the HiRISE camera resulting in a resolution of about 1\,meter/pixel~\cite{li2011rigorous}.
 
 \subsection{Real-Time Image Projection} \label{sec:imageprojection}
 In order to support the direct iterative visualization of spacecraft image acquisition, our system interfaces with various tools used in space mission planning and monitoring.
 The information these tools provide is used to reconstruct the location and orientation of a spacecraft, together with specifications about the instruments camera system, such as field-of-view and detector sizes.
 Utilizing this data, together with the timing at which a specific image was taken, we project images and store them in an equirectangular global image map of the entire globe. This map can then be used as a data source providing image data to the renderer.
 
-The SPICE toolkit provided by NASA's \emph{Navigation and Ancillary Information Facility} is used to load location and orientation data for planets, spacecraft, and instruments~\cite{acton1996ancillary}.
+The SPICE toolkit provided by NASA's \emph{Navigation and Ancillary Information Facility} (NAIF) is used to load location and orientation data for planets, spacecraft, and instruments~\cite{acton1996ancillary}.
 %From this data, we acquire accurate positions and orientations of celestial bodies as well as spacecraft and their instruments throughout the time of a space mission.
-Image acquisition and exposure times are either directly provided by the mission scientists or are available through NASA's \emph{Planetary Data System} (PDS), which curates information about all past and current space missions~\cite{mcmahon1996overview}.
+Image acquisition and exposure times are either directly provided by the mission scientists or available through NASA's \emph{Planetary Data System} (PDS), which curates information about all past and current space missions~\cite{mcmahon1996overview}.
 
-In order to map image data onto the equirectangular format used for rendering, we combine position and navigation data from SPICE with image exposure timestamps from PDS. For individual instruments on the spacecraft, virtual camera frustums are constructed. For each image taken by an instrument, latitude-longitude values of the planetary surface are mapped to image coordinates.
-The images are projected to the celestial body using projective texturing as described by Everitt~\etal~\cite{Everitt:2001tg}.
-Using this method, the planet's triaxial ellipsoid is rendered from the view point of the instrument. Then the image is applied to the projected planet with the correct geometric distortions. Thus the resulting images can be converted into an equirectangular global mosaic during the visualization of the acquisition.
+In order to map image data onto the equirectangular format, we combine position and navigation data from SPICE with image exposure timestamps from PDS. For individual instruments on the spacecraft, virtual camera frustums are constructed. For each image taken by an instrument, latitude-longitude values of the planetary surface are mapped to image coordinates.
+The images are projected to the globe using projective texturing as described by Everitt~\etal~\cite{Everitt:2001tg}.
+Using this method, the globe's triaxial ellipsoid is rendered from the view point of the instrument. Then the image is applied to the projected globe with the correct geometric distortions. Thus the resulting images can be converted into an equirectangular global mosaic during the visualization of the acquisition.
 
 \subsection{Rendering System} \label{sec:renderingsystem}
 The rendering system is primarily driven by the rendering of chunks, which are organized into a quad-tree. Each chunk covers a particular geographic area of the planetary surface. The processing pipeline is outlined in \fig{chunkproc}. First, the chunk tree is processed to reflect the best fit for the given camera view. In this process the chunk tree is evaluated and chunks are either culled, split into child nodes, or merged. The resulting leaves are flagged for rendering, as detailed below in Section~\ref{sec:chunktree}. Second, the system requests tile data from tile providers and will continue to render chunks with the currently available tiles, which we explain in Section~\ref{sec:tilemgmt}. Finally, tiles and layers are combined in the fragment pipeline, presented in Section~\ref{sec:chunkrendering}.
 Each chunk is rendered as a skirted regular grid mesh associated with a geodetic area and level of detail, see \fig{chunks-and-tiles}. The grid size is constant per chunk and the height map layers will affect the altitude of the grid vertices.
 
 Separating the representation used for the chunks (the geometry) from the individual tiles (the textures) enables dynamic loading as the geometry LOD can be updated independently from the image information and does not rely on the tile availability.
-This is particularly important when multiple layers are combined as each may have different resolution.
+This is important when multiple layers are combined as each may have its unique resolution.
 \fig{chunks-and-tiles} shows this exemplified on a single chunk that is rendered using three layers, each organized in a separate quad-tree.
 
 %Each layer originates from a separate dataset and can be enabled or disabled to show how individual instruments have contributed to our knowledge about a celestial body.
@@ -653,9 +658,9 @@ This is particularly important when multiple layers are combined as each may hav
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{figures/rendering-pipeline.pdf}
-  \caption{Chunk tree processing and rendering pipeline overview. For each frame, the tree is evaluated and culled before rendering. Tiles are loaded asynchronously to avoid stalling the rendering pipeline.}  \vspace{-3mm}
+  \caption{Chunk tree processing and rendering pipeline overview. For each frame, the tree is evaluated and culled before rendering. Tiles are loaded asynchronously to avoid stalling the rendering pipeline.}  \vspace{-4mm}
 %  \caption{Chunk tree processing and rendering pipeline overview.}
-  \label{fig:chunkproc}
+  \label{fig:chunkproc}%\vspace{-4mm}
 \end{figure}
 
 
@@ -663,42 +668,42 @@ This is particularly important when multiple layers are combined as each may hav
 %The quad-tree storing the chunk information 
 %Since we generally do not perform any preprocessing to generate geometries, height mapping is performed on the fly.
 
-Chunk nodes are organized in a quad-tree and defined as $C\{x, y\}_k$ for a geographic coordinate index $\left( x,y \right)$ and detail level $k$.
-Chunk tree evaluation involves selection of the desired LOD, limiting the level, and culling of chunk levels, as illustrated in \fig{chunkproc}.
-The remaining chunk tree nodes are flagged as visible for rendering.
+Chunk nodes are organized in a quad-tree and defined as $C\{x, y\}_k$ for a geographic coordinate index $\left( x,y \right)$ and detail level $k$. When $k=1$, the globe is represented with two chunks, one for the Western and one for the Eastern hemisphere.
+Chunk tree evaluation involves selection of the desired LOD, limiting the level, and culling of chunks, as illustrated in \fig{chunkproc}.
 
 %Our chunk tree structure is light weight as it does not require vertex data to be stored for every chunk node. We adhere to the common techniques used for chunked LOD rendering but tailor it to our light weight implementation.
 
+\noindent\textbf{Chunk selection} ---
+Like Cozzi and Ring~\cite{cozzi20113d}, we select chunks using a unique error metric. Our error metric however is calculated on the fly using the logarithm of the inverse distance from its closest point to the camera position or by an approximation of the chunk's projected area on a sphere around the camera.
+The spherical projection is important for multi-display systems where there should be no difference in the error metric of a specific chunk rendered across neighboring screens.
 
-\noindent\textbf{Chunk selection} is performed by choosing an error metric defined for each chunk, uniquely calculated by the logarithm of the inverse distance from its closest point to the camera position or by an approximation of the projected area of the chunk on a sphere around the camera.
-The spherical projection becomes important when using multi-display systems where there should be no difference in the error metric of a specific chunk rendered across two neighboring screens.
-
-\noindent\textbf{Level limitation} is used in case a specific tile dataset does not contain any higher resolution tiles.
-Since the geographical extents of the map datasets are unknown until a tile reading procedure is performed there is no way to know the highest detail level beforehand.
+\noindent\textbf{Level limitation} ---
+In case a specific tile dataset does not contain any higher resolution tiles the maximum level of the chunk tree is limited.
+Since tile datasets can be sparse there is no way to know the highest detail level before the actual reading takes place.
 To avoid unnecessary splits of chunk nodes, they should not split unless there is higher resolution data available, that is, if a tile reading operation fails.
 
-\noindent\textbf{Chunk culling} is performed to minimize the number of render calls due to invisible chunks.
+\noindent\textbf{Chunk culling} --- To minimize the number of render calls, invisible chunks are culled.
 For horizon culling we use the maximum height of the chunk as bounding sphere.
 Chunks that are outside of the camera frustum are culled by testing a view space defined axis aligned bounding box of the chunk against the camera frustum.
 To perform correct culling, the height layer tiles do need some preprocessing before they can be used for rendering. More specifically, the minimum and maximum values of the tiles are used to specify a minimal bounding hexahedron for each chunk. These values are calculated out of core.
-The culling procedure flags each chunk node as visible or invisible.
+The remaining chunk nodes are flagged as visible for rendering.
 
 \subsubsection{Tile Management} \label{sec:tilemgmt}
-A chunk is affected by multiple \emph{tiles} that have a texture representing a geodetic area and are uniquely defined using the notation $T_L\{x,y\}_k$, with the layer identifier $L$, the geographic tile index $\left( x,y \right)$ and the detail level $k$.
-Tiles are organized in a quad-tree structure so that $T_L\{x,y\}_k$ covers the same spatial area as the four child tiles $T_L\{2x,2y\}_{k+1}$, $T_L\{2x,2y+1\}_{k+1}$, $T_L\{2x+1,2y\}_{k+1}$ and $T_L\{2x+1,2y+1\}_{k+1}$.
+A chunk is affected by multiple tiles that have a texture representing a geodetic area. Tiles are uniquely defined using the notation $T_L\{x,y\}_k$, with the layer identifier $L$, the geographic tile index $\left( x,y \right)$ and the detail level $k$.
+Tiles are organized in a quad-tree structure so that $T_L\{x,y\}_k$ covers the same area as the four child tiles $T_L\{2x,2y\}_{k+1}$, $T_L\{2x,2y+1\}_{k+1}$, $T_L\{2x+1,2y\}_{k+1}$ and $T_L\{2x+1,2y+1\}_{k+1}$.
 \emph{Layers} provide different semantic meaning for groups of tiles. Such usage are for example color layers, color overlays, water masks, or height layers.
-The layers' usage only impact the final rendering steps which means that all tiles of the same resolution can be cached together.
+The layers' usage only impact the final rendering steps which means that all textures of the same resolution can be cached together and be reused for more recently requested tiles.
 %Layers of the same semantic meaning form layer groups and thus provide a way to handle data from different sources the same way if they have the same type of content.
 
 %Tiles are globally arranged into layers, based on their type and source of the tile data. Layers of equal type, such as color images, height maps, and gray-scale images, are organized into layer groups.
 %In the rendering process different blending and compositing operations are supported between the layer groups, between the layers in the group, and between the levels within a layer.
 Each layer has a corresponding tile provider that the renderer will query using the tile index, representing the corresponding chunk to render.
 Tiles are requested for all active layers from the different layer groups.
-The ellipsoidal partitioning of the hierarchical tiles are aligned with the chunk partitioning, mapping the tile in a 1:1 relation. This enables texture sampling to be performed in the local space of each chunk, avoiding precision issues in texture coordinate calculation.
+The ellipsoidal partitioning of the hierarchical tiles are aligned with the chunk partitioning, mapping the tile in a 1:1 relation except for a local offset and scaling. This enables texture sampling to be performed in the local space of each chunk, avoiding precision issues in texture coordinate calculation. Pixel padding, shown as borders around tiles in \fig{chunks-and-tiles}, is also used to achieve seamless blending between tiles.
 As a tile provider receives requests for tiles from the rendering thread it will return a tile if present in the in-memory cache, otherwise an empty tile is provided and an asynchronous read request is put on a queue for the provider's tile reading thread.
 The tile reader thread uses GDAL to read tile data from a source, GDAL is also caching data locally on disk and maintains an internal cache for recombining and remapping raw data tiles to cover the caller's requested geographic area with pixels.
 %The raw tile data reader takes as input a tile index and outputs a raw tile that covers the given geographic area with pixels.
-Once the image data is ready, a tile is created by the rendering thread and uploaded to GPU memory as a texture.
+Once the image data is ready, a tile is created and uploaded to GPU memory as a texture.
 The tile provider uses an in-memory \emph{least recently used} (LRU) cache so that it can return a cached tile upon request.
 %If the tile is already in the cache, the tile provider simply needs to return it and update the cache upon request.
 The LRU cache is shared by tile providers of the same layer group and keeps track of the total amount of tile data cached in system memory and on the GPU. When the cache is full, the tile texture of the least recently used tile will be re-used to create a new tile.
@@ -718,20 +723,13 @@ Any other caching is performed outside of the rendering software.
 \begin{figure}
   \centering
     \includegraphics[width=1.0\linewidth]{figures/chunks-and-tiles4.pdf}
-  \caption{Rendering chunk $\textrm{C}\left\{ 6,4 \right\}_5$ by combining the information from 9 tiles. For each of the three layer groups $\textrm{T}_\textrm{c}$~(color), $\textrm{T}_\textrm{g}$~(overlay), and $\textrm{T}_\textrm{h}$~(height), the rendering of the main tile $\textrm{T}_\textrm{c}\left\{ 3,2 \right\}_3$,  $\textrm{T}_\textrm{g}\left\{ 6,4 \right\}_4$,  $\textrm{T}_\textrm{h}\left\{ 6,4 \right\}_4$ requires additional levels if level blending is enabled in order to provide interpolation between levels to avoid artifacts.}\vspace*{-3mm}
+  \caption{Rendering chunk $\textrm{C}\left\{ 6,4 \right\}_5$ by combining the information from 9 tiles. For each of the three layer groups $\textrm{T}_\textrm{c}$~(color), $\textrm{T}_\textrm{g}$~(overlay), and $\textrm{T}_\textrm{h}$~(height), the rendering of the main tile $\textrm{T}_\textrm{c}\left\{ 3,2 \right\}_3$,  $\textrm{T}_\textrm{g}\left\{ 6,4 \right\}_4$,  $\textrm{T}_\textrm{h}\left\{ 6,4 \right\}_4$ requires additional levels if level blending is enabled in order to provide interpolation between levels to avoid artifacts.}\vspace*{-4mm}
   \label{fig:chunks-and-tiles}
 \end{figure}
 
 
-\begin{figure}[b]
-  \centering
-    \includegraphics[width=1.0\linewidth]{figures/fragment-blending.pdf}
-  \caption{Layer blending. Gray-scale overlays affect only the value component of the base color in HSV space. Water masks are used to change the specular reflection in the surface shading. Night tiles are useful for Earth where cities illuminate the side that is not facing the Sun. Geographical information can be added using overlay tiles.}
-  \label{fig:fragpipe}
-\end{figure}
-
 Given a valid chunk tree, each chunk that is flagged as visible is rendered individually.
-The geometry of the chunks is defined as a 2D regular skirted grid of vertices as seen in \fig{chunks-and-tiles}. This grid has a specific resolution in the size of the highest resolution height layer tiles. We avoid triangle decimation so that the same grid can be used for all chunks. This makes our chunk tree representation light weight and dynamic as vertex offsetting is performed in the vertex shader.
+The geometry of the chunks is defined as a 2D regular skirted grid of constant size as seen in \fig{chunks-and-tiles}. We avoid triangle decimation so that the same grid can be used for all chunks. This makes our chunk tree representation light weight and dynamic as vertex offsetting is performed in the vertex shader.
 
 %The downside of using a light weight chunk representation is that we are limited to the use of height mapping for vertex positioning which is done on the fly in the vertex shader.
 %This, however saves us from preprocessing.
@@ -739,48 +737,85 @@ The geometry of the chunks is defined as a 2D regular skirted grid of vertices a
 Each time a chunk needs to be rendered, all active layers will be queried for the most appropriate tiles.
 %A tile can be transformed with a scale and an offset if it does not map 1:1 on to a chunk as seen in \fig{chunks-and-tiles}.
 If the requested resolution level is not available, lower levels will be used.
-The renderer keeps the two immediately lower resolution levels available as well such that appropriate blending can be applied, see \fig{chunks-and-tiles}.
+The renderer keeps the two immediately lower resolution levels available as well so that appropriate level blending can be applied, see \fig{chunks-and-tiles}.
+We employ two types of rendering techniques for vertex positionig to account for both accuracy and precision.
+
 %This is useful, not only for level blending (Section \ref{sec:fragment_blending}), but if a tile of a certain level is not available.
 %the second best thing to do is to go down a detail level and fetch the available tiles of lower detail, adjusting the mapping on the chunk so that the corresponding geodetic area of the tile gets mapped on higher level chunks.
 
 
 %\alexcomment{Kalle:  The vertices of a chunk need to be defined;  how is a chunk specified?  It was said earlier that the tree is lightweight}\plgrem{A chunk is light-weight as it does not hold any explicit geometry, it simply represents a region in the ellipsoid reference space. Geometry is generated on the flyby a tessellation shader using the height-map layer group. What is still unclear to me is how the LOD is determined for height-map and tessellation. The resolution is perhaps also flexible, or? I assume color and gray-scale layers need higher resolution than height-maps for a good visual appearance.}
 
-To inversely project the vertices defining the chunk grid, from georeferenced coordinates to the globe model space, we employ two types of rendering techniques to account for both accuracy and precision.
 
-\vspace*{-1.5mm}
-\paragraph{Model-space rendering}
+%\vspace*{-1.5mm}
+
+\noindent\textbf{Model-space rendering} ---
+Using the inverse projection $P^{-1}(\phi,\theta)$, vertices of a given chunk are unprojected from the georeferenced projection to the Cartesian model space of the globe.
+This operation is performed in single precision on the GPU and results in the chunk being accurately mapped to the curvature of the reference ellipsoid.
+Using this rendering method, the theoretical upper limit of precision will, for a Mars sized globe with radius $r = 3,390 ~km$, be $p = \epsilon r \approx 0.2 ~m$ where $\epsilon = 2^{-24}$ is the machine epsilon of a single precision IEEE floating point number \cite{Axelsson2017Dynamic}. Assuming a screen of width 1,920 pixels, the maximum horizontal length of a tile that covers half of the screen $w = 1,920 / 2$, and does not allow a one pixel error offset, is $l_{max} = p w \approx 194~m$. Approximating the horizontal chunk length as $l = 2 \pi r / 2^{k}$, we get that the chunk level should not exceed $k_{max} = 16$ for model space rendering.
+
+\noindent\textbf{Camera-space rendering} ---
+To avoid having an upper bound on the chunk level so that the camera can move arbitrarily close to the surface without presicion errors we use camera space rendering.
+The inverse projection $P^{-1}(\phi,\theta)$ can be performed in double precision on the CPU for the four corner points of the chunk which are then transformed to camera space in double precision and uploaded to the GPU in single precision.
+The rest of the vertices representing the chunk are then obtained through bilinear interpolation.
+This method results in high precision rendering as the origin is practically moved to the center of the camera.
+The accuracy, however, is lower since the chunks are approximated as flat surfaces.
+We can calculate that the vertical error due the tiles being flat is $e_c = r - r \cos{(2\pi/2^{k + 1})}$.
+With the constraint that the screen space error remains smaller than one pixel, i.e. $w e_c / l < 1$, we obtain the minimum allowed chunk level for camera space rendering $k_{min} = 10$.
+
+\noindent\textbf{Combined model- and camera-space rendering} ---
+To account for both the accuracy, required for large curved chunks, and precision, required for smaller chunks close to the camera, we use a cutoff level, $\lambda$, to determine whether to use the model space or the camera space rendering as illustrated in \fig{chunkproc}.
+Setting  $\lambda$ to a value between $k_{min} = 10$ and $k_{max} = 16$, satisfies both of the error criteria. These calculations are invariant of $r$ which means that the same cutoff level can be used for globes of any size.
+
+\iffalse
+
+\noindent\textbf{Model-space rendering} ---
 Using the inverse projection $P^{-1}(\phi,\theta)$, vertices of a given chunk are unprojected from the georeferenced projection to the Cartesian model space of the globe.
 This unprojection is performed in single precision on the GPU and results in the chunk being accurately mapped to the curvature of the reference ellipsoid.
 
-\vspace*{-1.5mm}
-\paragraph{Camera-space rendering}
+%\vspace*{-1.5mm}
+
+\noindent\textbf{Camera-space rendering} ---
 The same inverse projection can be performed in double precision on the CPU for the four corner points of the chunk which are then transformed to camera space in double precision and uploaded to the GPU in single precision.
 The rest of the vertices representing the chunk can be obtained through bilinear interpolation for the chunk and then mapped onto the reference ellipsoid.
 
 This method results in high precision rendering as the origin is practically moved to the center of the camera.
-The accuracy is, however, lower since the chunks are approximated as flat surfaces due to the bilinear interpolation.
+The accuracy, however, is lower since the chunks are approximated as flat surfaces due to the bilinear interpolation.
 
-\vspace*{-1.5mm}
-\paragraph{Combined model- and camera-space rendering}
-To achieve both the accuracy required for the curvature and the precision required for rendering small chunks close to the camera are rendered with the model space method as illustrated in \fig{chunkproc}. We use a cutoff level, $\lambda$, below which chunks need to be curved.
+%\vspace*{-1.5mm}
+
+\noindent\textbf{Combined model- and camera-space rendering} ---
+To account for both accuracy, required for large curved chunks, and precision, required for smaller chunks close to the surface, We use a cutoff level, $\lambda$, to determine whether to use the model space or the camera space rendering as illustrated in \fig{chunkproc}.
 All smaller chunks, which are better approximated as flat surfaces, are rendered with the camera space method since their vertical error metric, due to curvature, is smaller.
-As an example, a cutoff level of $\lambda = 10$ for Mars leads to a maximum vertical error of $e = r - r \cos{(360/(2^{\lambda + 1}))} \approx 16$ meters with $r=3 390$ km.
-With chunks of width $r \sin{(360 / (2^{10 + 1})} / 2 \approx 296$ km, 16 meters vertical error is not noticeable and as the chunks split, higher levels will lead to smaller error.
+As an example, a cutoff level of $\lambda = 10$ for Mars, where $r=3,390$ km, leads to a maximum vertical error of $e = r - r \cos{(2\pi/(2^{\lambda + 1}))} \approx 16$ meters.
+With chunks of horizontal length $l = 2\pi r / 2^{\lambda} \approx 20.8$ km, 16 meters vertical error is not noticeable. We can exemplify this using a screen with a resolution of 1,920 pixels and a chunk covering half the screen as an overestimate. The resulting error is $e / l  \times 1,920 / 2 \approx 0.7$ pixels and decreasing for higher levels.
+Similarly, the maximum precision error allowed for this level to avoid one pixel offsets is $20,800 / (1,920 / 2) \approx 22$ meters. The numbers used need to accurately represent $3,390,000 / 22 \approx 154,000$, which is smaller than the highest accurate IEEE floating point number \cite{kooima2009planetary}. Therefore, all lower levels can be rendered with the model space method without precision issues.
 
-\vspace*{-1.5mm}
-\paragraph{Fragment blending} \label{sec:fragment_blending}
+\kallecomment{Rewrite the camera / model space rendering to be a derivation of the cutoff level.}
+
+\fi
+
+%\vspace*{-1.5mm}
+
+\noindent\textbf{Fragment blending} ---
 To account for versatility and seamless level switching %\cite[p. 450]{cozzi20113d}
-we perform three different types of fragment blending:
+we perform three different types of fragment blending.
 
-\noindent\textbf{Layer group blending} is performed to blend different layer groups by sampling and compositing each active layer group to get the final color, as shown in \fig{fragpipe}.
-One important example is the use of gray-scale overlays on top of color layers.
-The gray-scale overlay layer group is used to sample the underlying color (hue and saturation) and setting the intensity (value) according to the value of the gray-scale overlays.
-Another example is the night layers which will be sampled on the night side of the globe, if any are activated.
+Layer group blending is performed to blend different layer groups by sampling and compositing each active layer group to get the final color, as shown in \fig{fragpipe}.
+Examples are night layers which will be sampled on the night side of the globe, and water layers which are used to add a specular component to the final color.
 
-\noindent\textbf{Layer blending} is performed so that many layers in the same layer group can be rendered together. Layers can be manually ordered and combined using a per-layer opacity parameter. Furthermore, using alpha blending, local high-resolution patches can be rendered on top of other datasets with lower resolution.
+Layer blending is performed so that many layers in the same layer group can be rendered together. Layers can be manually ordered and combined using per-layer settings such as opacity or blend mode. Furthermore, using alpha blending, local high-resolution patches can be rendered on top of other datasets with lower resolution.
 
-\noindent\textbf{Level blending} is performed to smoothly transition between levels and avoid artifacts. It differs from Ulrich's time-varying blending \cite{ulrich2002rendering} in that we calculate an interpolation parameter for each fragment similar to Kooima \etal ~\cite{kooima2009planetary} depending on the camera distance that is used to interpolate between the tile of the current chunk level and the corresponding tiles of the two lower-level tiles, see Figure~\ref{fig:chunks-and-tiles}.
+Level blending is performed to smoothly transition between levels and avoid artifacts. It differs from Ulrich's time-varying blending \cite{ulrich2002rendering} in that we calculate an interpolation parameter for each fragment similar to Kooima \etal ~\cite{kooima2009planetary} depending on the camera distance that is used to interpolate between the tile of the current chunk level and the corresponding tiles of the two lower-level tiles, see Figure~\ref{fig:chunks-and-tiles}.
+
+We use shader preprocessing and recompilation to opt out any unused blending option or layer as they are togglable interactively.
+
+\begin{figure}[t]
+  \centering
+    \includegraphics[width=1.0\linewidth]{figures/fragment-blending.pdf}
+  \caption{Layer blending. Gray-scale overlays affect only the value component of the base color in HSV space. Water masks are used to change the specular reflection in the surface shading. Night tiles are useful for Earth where cities illuminate the side that is not facing the Sun. Geographical information can be added using overlay tiles.}
+  \label{fig:fragpipe}\vspace{-4mm}
+\end{figure}
 
 \iffalse
 
@@ -800,12 +835,10 @@ Another example is the night layers which will be sampled on the night side of t
 
 \fi
 
-We use shader preprocessing to opt out any unused blending option.
-As soon as a layer is activated, or deactivated or if blending is enabled or disabled we recompile the fragment shader to only sample textures that contribute to the final color of the chunk.
 
 \subsubsection{Time Varying Datasets}
-Due to the abstraction of tile requests, a layer can have a given type which can be updated in the rendering loop. For time varying datasets, a time stamp corresponding to the current simulation time is used to instantiate a tile provider for any given time step.
-We store a template defining the dataset without a specific time stamp. This template can be a file path or a GDAL WMS configuration that contains the string key \texttt{\$\{OpenSpaceTimeId\}} along with metadata defining time format, start time, end time, and temporal resolution. When issuing calls for tiles and the corresponding tile provider needs to be created, the time stamp key is replaced with a time stamp and a new dataset is opened.
+Due to the abstraction of tile requests, we can define a layer type which can be updated in the rendering loop. For time varying datasets, a time stamp corresponding to the current simulation time is used to instantiate a tile provider for any given time step.
+We store a template defining the dataset without a specific time stamp. This template can be a file path or a GDAL WMS configuration that contains a time stamp key along with metadata defining time format, start time, end time, and temporal resolution. When issuing calls for tiles and the corresponding tile provider needs to be created, the time stamp key is replaced with a time stamp and a new dataset is opened.
 
 As an example, a folder containing several image files can be used as a source for a temporal dataset as new files are opened once the simulation time reaches the next valid interval. If the dataset corresponding to the given time interval is already open, the temporal tile provider reads the tile corresponding to the given tile index.
 Tiles from temporal tile layers do not differ from other tiles so they can be saved in the same cache and returned upon request.
@@ -816,16 +849,16 @@ Opening datasets and streaming tile data upon request can cause delay in tile lo
 Our application use an implementation of atmospheric effects as proposed by Elek~\cite{elek2009rendering}. The teaser image as well as \fig{marsganges} and \fig{earthdynamic} shows how it enables more realistic representations of Earth and Mars.
 
 \subsection{Multi Display Systems Rendering} \label{sec:multidisplaysystems}
-The OpenSpace software uses a cluster rendering software package known as \emph{Simple Graphics Cluster Toolkit} (SGCT)~\cite{sgct} which supports image warping and blending for projection on dome displays and other clustered environments using several rendering machines (see Figure~\ref{fig:power_wall}).
-Synchronization across rendering nodes is based on GenLocking at the graphics hardware level and SGCT furthermore provides support for synchronization of selected application data at frame rendering level, ensuring that all nodes in the cluster renders a given frame with the same camera state.
-Tile loading and chunk LOD selection is autonomous on each node, which visually can result in minor differences in the projector blending regions. However, due to the use of camera direction independent chunk selection algorithms, each rendering node will request the right tiles to be used across projector edges.
+The OpenSpace software uses a cluster rendering software package known as the \emph{Simple Graphics Cluster Toolkit} (SGCT)~\cite{sgct} which supports image warping and blending for projection on dome displays and other clustered environments using several rendering machines (see Figure~\ref{fig:power_wall}).
+Synchronization across rendering nodes is based on GenLocking at the graphics hardware level and SGCT furthermore provides support for synchronization of selected application data at frame rendering level, ensuring that all nodes in the cluster renders a given frame with the same camera and time state.
+Tile loading and chunk LOD selection is autonomous on each node, which visually can result in minor differences in the projector blending regions. However, due to the use of camera direction independent chunk selection algorithms, each rendering node will request the same tiles to be used across projector edges.
 % The loading time can differ however since each node uses its own tile reading request queue
 % This is generally not an issue as navigation and movement in dome settings need to be slow to moderate to avoid motion sickness.
 
-\begin{figure}
+\begin{figure}[b]\vspace{-4mm}
     \centering
     	\fbox{\includegraphics[width=1.0\linewidth]{figures/power_wall.jpg}}
-        \caption{Browsing the surface of Mars in a clustered environment rendering on the power wall at the University of Utah. The system uses eight rendering nodes, each connected to four screens.}  \vspace{-4mm}
+        \caption{Browsing the surface of Mars in a clustered environment rendering on the power wall at the University of Utah. The system uses eight rendering nodes, each connected to four screens.}
     \label{fig:power_wall}
 \end{figure}
 
@@ -833,21 +866,20 @@ Tile loading and chunk LOD selection is autonomous on each node, which visually 
 %\anderscomment{We have to make sure that this section doesn't become a repeat of the application scenarios section with some more details added.
 %}
 
-Here we present our results exemplified by the three application scenarios introduced in Section \ref{sec:scenarios}. We perform a globe browsing descent towards the surface of mars measuring frame time and the size of the chunk tree. We also show how the Earth can be rendered with temporally varying textures of high resolution. Finally, we exemplify how our application is used to communicate the data acquisition process of the New Horizons flyby of the Pluto system.
-
-\begin{figure}[b!]
-  \centering
-    \includegraphics[width=1.0\linewidth]{figures/load_times.pdf}
-  \caption{Loading times for different data sources illustrated by the number of rendered chunks. Each recording is performed by enabling the layer when the camera is 50\,m from the ground facing the horizon.}  %\vspace*{-4mm}
-  \label{fig:load-times}
-\end{figure}
-
+Here we present our results exemplified by the three application scenarios introduced in Section \ref{sec:scenarios}. We perform a globe browsing descent towards the surface of Mars measuring frame time and the size of the chunk tree. We also show how the Earth can be rendered with temporally varying textures of high resolution. Finally, we exemplify how our application is used to communicate the data acquisition process of the New Horizons flyby of the Pluto system.
 
 \begin{figure*}
 \includegraphics[width=\linewidth]{figures/marsbrowsing5_compressed.pdf}
-\caption{Globe browsing on Mars: top graph shows size of the chunk tree along with the total render time. Atmosphere is not rendered. 1) Global CTX Mosaic enabled, 2) Local CTX patch enabled, 3) Local HiRISE patch enabled. A) Camera approaches Mars, B) Valles Marineris, C) West Candor Chasma, D) Layered rock outcrops in South West Candor Chasma, E) Camera tilted up, F) Camera rotated and then tilted down.}  \vspace{-2mm}
+\caption{Globe browsing on Mars: top graph shows size of the chunk tree along with the total render time. Atmosphere is not rendered. 1) Global CTX Mosaic enabled, 2) Local CTX patch enabled, 3) Local HiRISE patch enabled. A) Camera approaches Mars, B) Valles Marineris, C) West Candor Chasma, D) Layered rock outcrops in South West Candor Chasma, E) Camera tilted up, F) Camera rotated and then tilted down.}  \vspace{-4mm}
 \label{fig:globebrowsingmars}
 \end{figure*}
+
+\begin{figure}[t!]
+  \centering
+    \includegraphics[width=1.0\linewidth]{figures/load_times.pdf}
+  \caption{Loading times for different data sources illustrated by the number of rendered chunks when enabling the layer as the camera is placed 50\,meters from the surface facing the horizon.}
+  \label{fig:load-times}\vspace*{-4mm}
+\end{figure}
 
 \subsection{Globe Browsing on Mars}
 
@@ -860,27 +892,26 @@ Furthermore, in order to achieve more detail, we include the Global CTX mosaic, 
 
 The computer used for the measurements is an Intel Xeon E5-1620 3.60~GHz with 8~GB RAM and an NVIDIA GeForce GTX-780 GPU.
 
-\begin{figure}[b!]
-    \centering
-    	\fbox{\includegraphics[width=0.98\linewidth]{figures/frustum_mars.jpg}}
-        \caption{Illustration of camera frustum and horizon culling. Model space rendering of chunks (green) is performed at higher levels, while camera space rendering (red) is performed at lower levels.}
-    \label{fig:frustum_mars}
-\end{figure}
-
 \fig{globebrowsingmars} shows how the frame time depends on the loading of data and the size of the chunk tree.
 When activating new layers, the frame time increases due to the need of shader recompilation.
-By descending to the surface, more of the chunk tree has to be traversed. However, the number of rendered chunks stays constant due to culling.
-Tilting the camera leads to initialization of tile reading calls which in turn causes the chunk tree to grow over time as more tiles become available.
+By descending to the surface, more of the chunk tree is traversed. However, the number of rendered chunks stays constant due to culling.
+Tilting the camera leads to new tile reading calls which in turn causes the chunk tree to grow over time as more tiles become available, see \fig{frustum_mars}.
 Following point E, the camera is rotated and thus decreasing the chunk tree due to unavailable tile data in areas previously invisible to the camera.
 As soon as the data is read and available, the chunk tree grows since it no longer is limited by the unavailable data.
 As soon as the camera is tilted down again, the number of rendered chunks decreases.
 
-To further show how the different data products contribute in building the chunk tree, \fig{load-times} illustrates the loading time for each of the Mars datasets with the camera positioned 50\,m above ground in the area of the HiRISE patch.
-The number of rendered chunks is directly dependent on the data source used due to the chunk level being limited by the availability of data.
-Hence, the final number of chunks differs depending on the data source. 
+To further show how the different data products contribute to the chunk tree, \fig{load-times} illustrates the loading time for each of the Mars datasets with the camera positioned above the HiRISE patch.
+The final number of rendered chunks is directly dependent on the data source used due to the chunk level being limited by the availability of data and therefore differs between datasets.
 This scenario combines data sources stored on local WMS servers (CTX Mosaic and MOLA) and local patches stored on a spinning hard disk (HiRISE) and there is no significant difference between the loading times of the two.
 
-\begin{figure}[b!]\vspace*{-1mm}
+\begin{figure}[t!]
+    \centering
+    	\fbox{\includegraphics[width=0.98\linewidth]{figures/frustum_mars.jpg}}
+        \caption{Illustration of camera frustum and horizon culling. Model space rendering of chunks (green) is performed at higher levels, while camera space rendering (red) is performed at lower levels.}
+    \label{fig:frustum_mars}\vspace*{-4mm}
+\end{figure}
+
+\begin{figure}[b!]\vspace*{-4mm}
     \centering
     	\fbox{\includegraphics[width=\linewidth]{figures/glacier.jpg}}
         \caption{Rendering of a single timestep of the Helheim glacier's movements in Greenland as acquired by radar measurements. With a cadence of 15 minutes, it becomes possible to observe the carving of the glacier.}
@@ -888,15 +919,16 @@ This scenario combines data sources stored on local WMS servers (CTX Mosaic and 
 \end{figure}
 
 The Mars globe browsing sessions have been used in a large number of public presentations to explain the history of Mars exploration, and the ability to contextualize events pertaining to the rovers on the surface.
-These public education events using the available Mars data has been ongoing for the past year and have reached thousands of people using multi display systems and online streaming for public outreach. One such example of an event was a globe browsing session in the Hayden Planetarium seen by 400 people on site and live streamed on YouTube on June 5\textsuperscript{th} 2017 entitled ``Mars as Never Seen Before''.
+These public education events using the available Mars data have been ongoing for the past year and reached thousands of people using multi display systems and online streaming for public outreach. One such example of an event was a globe browsing session in the Hayden Planetarium seen by 400 people on site and live streamed on YouTube on June 5\textsuperscript{th} 2017 entitled "Mars as never seen before".
 
 \subsection{Temporal Datasets on Earth}
 
 In addition to ongoing public events related to the exploration of high resolution surface imagery on Mars, other public live shows have been held using our system to show dynamic processes on our own planet.
-On April 22\textsuperscript{nd} 2017, coinciding with Earth day, an event connecting five locations around the world in which the impact of global warming on Earth was explained to a live audience. This event consisted of multiple global NOAA datasets that show, among other parameters, precipitation, temperature, and the aerosol content of the atmosphere.
+On April 22\textsuperscript{nd} 2017, coinciding with Earth day, an event connecting five locations around the world was held to discuss the impact of global warming on Earth with live audiences.
+This event consisted of multiple global NOAA datasets that show, among other parameters, precipitation, temperature, and the aerosol content of the atmosphere.
 
-Moreover, to show how the Sun is directly affecting our planet, coinciding with Sun-Earth day, an event is planned on June 27\textsuperscript{th} 2017.
-By combining volumetric datasets from NASA's \emph{Community Coordinated Modeling Center} (CCMC) simulating solar activity with measured data in the form of global equirectangular time-varying datasets close to Earth, we can visualize how the solar flares of 2012 relates to the number of charged particles that impacted the planet.
+Moreover, to show how the Sun is directly affecting our planet, coinciding with Sun-Earth day, an event was held on June 27\textsuperscript{th} 2017 at the Hayden Planetarium.
+By showing volumetric datasets from NASA's \emph{Community Coordinated Modeling Center} (CCMC), simulating solar activity visualized with time-varying field lines and ray casted volumes, in the same context as measured data in the form of global equirectangular time-varying datasets close to Earth, our software was used to visualize how the solar flares of 2012 related to the number of charged particles that impacted our planet.
 
 %Another dataset is provided by the Center for Atmosphere Ocean Science at New York University and consists of radar measurements of glacial movements on Greenland (see Figure~\ref{fig:helheim-glacier}). These measurements provide the velocity and height of glaciers as they carve and move into the Atlantic. This results in a time-varying DEM that changes every 15 minutes. While displaying this in a 3D environment is beneficial for the domain scientists, further research into time-varying DEMs is necessary.
 
@@ -952,21 +984,21 @@ By utilizing this data driven approach to animated planetary visualization we ca
 NASA's New Horizons mission flew by the Pluto system on July 14th, 2015 and took measurements with its seven instruments.
 Of special interest are the LORRI and \emph{Ralph} instruments, that provided images of Pluto and its moons' surfaces, as well as REX, measuring Pluto's atmosphere.
 %In our system, the images are projected using the method described in Section~\ref{sec:imageprojection}.
-The user can follow the progression of the spacecraft over time and seeing the instrument activities.
-In addition to visualization of the instrument frustum and projected images, the measurement times for all instruments are presented to the user. 
+The user can follow the progression of the spacecraft over time and see the instrument activities.
+In addition to visualization of the instrument frustums and projected images, the measurement times for all instruments are presented to the user. 
 
-This mission visualization was presented to about 2500 people during a public, global event with 13 different locations.
-During a 2\,h live show, which coincided with New Horizons closest approach to Pluto, experts on the mission team explained details of the desired outcome using \emph{OpenSpace} as the source of contextualization for this information, see \fig{nh_event}.
+This mission visualization was presented to about 2,500 people during a public, global event with 13 different locations.
+During a 2\,h live show, which coincided with New Horizons closest approach to Pluto, experts on the mission team explained details of the desired outcome using OpenSpace as the source of contextualization for this information, see \fig{nh_event}.
 In addition to the live audience in the participating locations, a video stream of the event was available on the web. This was also later provided as a video-on-demand, called ``Breakfast at Pluto''.
 The event was described in the poster on public dissemination of space mission profiles by Bock~\etal~\cite{Bock_2015}.
 Some initial results from the New Horizons mission are given by Stern~\etal~\cite{stern2015pluto}.
 The visualizations have also been used in several post flyby events showing the incremental update of our knowledge about this object to the general public.
 
-\begin{figure}
-%\vspace*{-5mm}
+\begin{figure}[b!]
+\vspace*{-4mm}
     \centering
     	\fbox{\includegraphics[width=\linewidth]{figures/breakfast.jpg}}
-        \caption{OpenSpace was used to visualize how New Horizons captured images of Pluto on July 14th, 2015. Sites from all over the world connected in a live event during the flyby. The image shows the New York site with host Neil deGrasse Tyson.}\vspace*{-3mm}
+        \caption{OpenSpace was used to visualize how New Horizons captured images of Pluto on July 14th, 2015. Sites from all over the world connected in a live event during the flyby. The image shows the New York site with host Neil deGrasse Tyson.}%\vspace*{-3mm}
     \label{fig:nh_event}
 \end{figure}
 
@@ -994,20 +1026,20 @@ Space missions, such as \emph{New Horizons} or \emph{Cassini}, are very expensiv
 \section{Conclusion and Future Work} \label{sec:conclusion}
 In this paper we have presented an application which enables data-driven visual browsing of planetary surfaces with dynamic resolution in space and time.
 The application makes it possible to generate global views as well as virtual terrain fly-overs.
-One of the novel aspects of our work is that it contextualizes the surface data in a seamless astrovisualization environment making it possible to travel form one planet to another, or even visit spacecraft at current locations.
+One of the novel aspects of our work is that it contextualizes the surface data in a seamless astrovisualization environment making it possible to travel from one globe to another, or even visit spacecraft at past, current, or future locations.
 The platform used is the OpenSpace~\cite{Bock_2015} software which builds on a dynamic scene graph and the capability to accurately position and visualize celestial bodies and spacecraft.
 Another key component presented is the capability to visualize the data acquisition process from the spacecraft perspective, letting the user appreciate the engineering efforts behind complex space exploration missions whilst appreciating the origin of the data which drives scientific discovery.
 Our target use is in science communication and the software has already proven to create engaging immersive experiences in large scale dome theaters.
 We have developed a tool useful for scientists, who want to present their work in a contextualized manner, and for the general public who wish to explore the most accurate and open data representation of celestial bodies.
 
-In future work we will further explore the seamless addition of detailed data from surface-based missions such as the Mars rovers. We will also add more data sources such as simulated data of abstract planetary properties.
-We also aim to add GIS tools to better aid scientists whereas the current main focus of the application is on public presentations.
+As future work we will further explore the seamless addition of detailed data from surface-based missions such as the Mars rovers. We will also add more data sources such as simulated data of abstract planetary properties.
+We also aim to add GIS tools to better aid scientists whereas the current main focus of the application is for public presentations.
 Intuitive and intelligent context dependent navigation models for multi-scale data is also an area with interesting challenges. 
 
 \acknowledgments{
 We would like to acknowledge the Swedish e-Science Research Center (SeRC) for their support of this work.
 Parts of this work were supported by NASA under award No NNX16AB93A, the Moore-Sloan Data Science Environment at New York University, NSF awards CNS-1229185, CCF-1533564, and CNS-1544753.
-The authors would like to thank Ryan Boller, Lucian Plesea, and the NASA GIBS team for their help.
+The authors would like to thank Ryan Boller, Lucian Plesea, and the NASA GIBS team for their help, and Jonathas Costa for the implementation of atmospheric effects. We would also like to thank the anonymous reviewers who provided valuable comments to improve the final quality of the paper.
 }
 
 %\bibliographystyle{abbrv}
