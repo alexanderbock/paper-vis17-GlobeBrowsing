@@ -158,10 +158,10 @@ As our approach handles dynamic data sources, streamed from online repositories,
 We describe the image acquisition pipeline, the pre-processing steps to derive a 2.5D terrain, and a chunked level-of-detail, out-of-core rendering approach to enable interactive exploration of global maps and high-resolution digital terrain models.
 The results are demonstrated for three different celestial bodies.
 The first case addresses high-resolution map data on the surface of Mars.
-A second case is showing dynamic processes, such as high-resolution, concurrent weather conditions on Earth that require temporal datasets.
+A second case is showing dynamic processes, such as concurrent weather conditions on Earth that require temporal datasets.
 As a final example we use data from the New Horizons spacecraft which acquired images during a single flyby of Pluto.
 We visualize the acquisition process as well as the resulting surface data.
-Our work has been implemented in the OpenSpace software, which enables interactive presentations in a range of environments such as immersive dome theaters, interactive touch tables, and virtual reality headsets.
+Our work has been implemented in the OpenSpace software~\cite{Bock2017}, which enables interactive presentations in a range of environments such as immersive dome theaters, interactive touch tables, and virtual reality headsets.
 
 %
 % In addition, the application supports temporal datasets, where available, in order to visualize a celestial body's dynamic processes, such as weather conditions on Earth.
@@ -304,7 +304,7 @@ Furthermore, the use of multiresolution visualization approaches to out-of-core 
 
 We have chosen to address the challenges in the context of three representative application scenarios for different celestial bodies.
 As a first example we show how our system can enable interactive and seamless surface exploration of Mars with previously unprecedented resolution.
-We then show, as an example of temporal data, how the daily images of the Earth, made available through the NASA GIBS project, can be accessed and visualized from vantage points in interplanetary space as well as in close ups of regions of interest in order to communicate dynamic processes such as atmospheric events of celestial bodies.
+We then show, as an example of temporal data, how daily images of the Earth, can be accessed and visualized from vantage points in interplanetary space as well as in close ups of regions of interest in order to communicate dynamic processes such as atmospheric events.
 Finally, we present how complex data gathering can be visualized by virtually following the New Horizons flyby of Pluto in 2015, and tapping into the data flows from the instruments on the probe, showing how high-resolution image mosaics are constructed, thus, dramatically reducing the time between discovery and dissemination.
 
 At the core of our approach lies the gathering of surface image data and projecting it to a common projection format either as a preprocessing step or as an integrated part of the rendering process to visualize the data acquisition.
@@ -432,7 +432,7 @@ LOD and multiresolution, out-of-core rendering methods are crucial when visualiz
 By using lower resolution representations to render distant objects, more resources can be directed towards rendering salient objects.
 Cozzi and Ring~\cite{cozzi20113d} provide a comprehensive introduction to common methods used for globe rendering.
 Examples of earlier LOD techniques for globe rendering include the \emph{real-time optimally adapting meshes}~(ROAM), introduced by Duchaineau~\etal~\cite{duchaineau1997roaming} with improvements made by Hwa~\etal~\cite{hwa2005real}.
-Cignoni \etal~\cite{cignoni2003planet,cignoni2003bdam} introduced P-BDAM as a planetary scale rendering solution requiring preprocessing and geometry generation.
+Cignoni \etal~\cite{cignoni2003planet} introduced P-BDAM as a planetary scale rendering solution requiring preprocessing and geometry generation.
 Although directed towards planetary visualization specifically, there were other methods such as chunked LOD~\cite{ulrich2002rendering} and geometry clip-maps~\cite{losasso2004geometry} that better adapted to the evolution of graphics hardware, the ability to combine multiple data sources, and to generate geometry on the fly.
 
 Kooima~\etal\cite{kooima2009planetary} use a recursive subdivision of an icosahedron to construct the globe using a GPU oriented approach for vertex tessellation and texture atlases for reuse of tiles. Though the rendering algorithm nicely solves polar issues and exploit excellent triangle uniformity, restricted texture sampling precision is a limitation due to the calculation of texture coordinates being performed as an inverse projection using the global transform to the space of the projected map which is either geographic or polar stereographic. Since texture sampling is performed in the fragment shader with 32 bit floating point arithmetic, the resulting texture coordinates are unable to precisely represent imagery of details smaller than 2.39 meters for an Earth sized globe \cite{kooima2009planetary}.
@@ -540,7 +540,7 @@ The \emph{Visible Infrared Imaging Radiometer Suite}~(VIIRS) instrument on the S
 In addition, it has a pan-chromatic Day-Night-Band that is used to capture the night side of the Earth, thus creating the ability to study the development of cities through their light emission.
 % compared to the MODIS instrument has a wider field of view, allowing a continuous coverage of the Earth at all latitudes without missing data.
 
-Another dataset is provided by the Center for Atmosphere Ocean Science at New York University and consists of radar measurements of glacial movements on Greenland. These measurements provide the velocity and height of glaciers as they carve and move into the Atlantic. This results in a time-varying DEM with a temporal resolution of 15 minutes.
+Another dataset is provided by the Center for Atmosphere Ocean Science at New York University and consists of radar measurements of glacial movements on Greenland. These measurements provide the velocity and height of glaciers as they calve and move into the Atlantic. This results in a time-varying DEM with a temporal resolution of 15 minutes.
 % The main challenge in handling time varying map data is the ability to cache a buffer of data read asynchronously.
 
 \subsection{Pluto} \label{sec:scenario:pluto}
@@ -601,7 +601,6 @@ If a global image dataset is not provided in equirectanglar projection, we conve
 The HiRISE patches from NASA are referenced in meters and not degrees as required by our equirectangular latitude-longitude rendering pipeline.
 Similarly, the exemplified time varying DEMs from the Center of Atmosphere Ocean Science are provided in EPSG:6326 datum which is used by the web mercator projection.
 These are examples of datasets that need to be reprojected.
-
 Through GDAL's notion of \emph{virtual datasets}, local patches are treated as sparsely populated global maps. Virtual datasets are defined using XML specifications where properties such as data type, geographic extent, scale factors, offsets, and multiple raster bands can be specified for versatility.
 
 To produce either local or global DTMs, some spacecraft use altimeters that are capable of measuring the height information directly.
@@ -914,7 +913,7 @@ This scenario combines data sources stored on local WMS servers (CTX Mosaic and 
 \begin{figure}[b!]\vspace*{-4mm}
     \centering
     	\fbox{\includegraphics[width=\linewidth]{figures/glacier.jpg}}
-        \caption{Rendering of a single timestep of the Helheim glacier's movements in Greenland as acquired by radar measurements. With a cadence of 15 minutes, it becomes possible to observe the carving of the glacier.}
+        \caption{Rendering of a single timestep of the Helheim glacier's movements in Greenland as acquired by radar measurements. With a cadence of 15 minutes, it becomes possible to observe the calving of the glacier.}
     \label{fig:glacier}
 \end{figure}
 
@@ -932,7 +931,7 @@ By showing volumetric datasets from NASA's \emph{Community Coordinated Modeling 
 
 %Another dataset is provided by the Center for Atmosphere Ocean Science at New York University and consists of radar measurements of glacial movements on Greenland (see Figure~\ref{fig:helheim-glacier}). These measurements provide the velocity and height of glaciers as they carve and move into the Atlantic. This results in a time-varying DEM that changes every 15 minutes. While displaying this in a 3D environment is beneficial for the domain scientists, further research into time-varying DEMs is necessary.
 
-By rendering time-varying DEMs in 3D, domain scientists working on generating and maintaining such datasets are able to contextualize their work. Further research into time-varying DEMs is necessary but we show already in \fig{glacier} the carving of the Helheim glacier ridge.
+By rendering time-varying DEMs in 3D, domain scientists working on generating and maintaining such datasets are able to contextualize their work. Further research into time-varying DEMs is necessary but we show already in \fig{glacier} the calving of the Helheim glacier ridge.
 
 By accessing other imagery repositories such as the ones mentioned in Section \ref{sec:scenario:earth} we are able to visualize hundreds of different scientific parameters animated over time. The list includes, but is not limited to, surface reflectance, cloud pressure, acids and oxides, temperatures, snow and ice coverage, soil and vegetation indices, chlorophyll levels, and more. Together with reference layers such as labels, border lines, coast lines, and roads these layers can easier be contextualized.
 \fig{earthdynamic} shows corrected reflectance and maximum air temperature, both with a temporal resolution of one day.
@@ -989,7 +988,7 @@ In addition to visualization of the instrument frustums and projected images, th
 
 This mission visualization was presented to about 2,500 people during a public, global event with 13 different locations.
 During a 2\,h live show, which coincided with New Horizons closest approach to Pluto, experts on the mission team explained details of the desired outcome using OpenSpace as the source of contextualization for this information, see \fig{nh_event}.
-In addition to the live audience in the participating locations, a video stream of the event was available on the web. This was also later provided as a video-on-demand, called ``Breakfast at Pluto''.
+In addition to the live audience in the participating locations, a video stream of the event was made available. This was also later provided as a video-on-demand, called ``Breakfast at Pluto''.
 The event was described in the poster on public dissemination of space mission profiles by Bock~\etal~\cite{Bock_2015}.
 Some initial results from the New Horizons mission are given by Stern~\etal~\cite{stern2015pluto}.
 The visualizations have also been used in several post flyby events showing the incremental update of our knowledge about this object to the general public.
@@ -1027,18 +1026,18 @@ Space missions, such as \emph{New Horizons} or \emph{Cassini}, are very expensiv
 In this paper we have presented an application which enables data-driven visual browsing of planetary surfaces with dynamic resolution in space and time.
 The application makes it possible to generate global views as well as virtual terrain fly-overs.
 One of the novel aspects of our work is that it contextualizes the surface data in a seamless astrovisualization environment making it possible to travel from one globe to another, or even visit spacecraft at past, current, or future locations.
-The platform used is the OpenSpace~\cite{Bock_2015} software which builds on a dynamic scene graph and the capability to accurately position and visualize celestial bodies and spacecraft.
+The platform used is the OpenSpace~\cite{Bock2017} software which builds on a dynamic scene graph and the capability to accurately position and visualize celestial bodies and spacecraft.
 Another key component presented is the capability to visualize the data acquisition process from the spacecraft perspective, letting the user appreciate the engineering efforts behind complex space exploration missions whilst appreciating the origin of the data which drives scientific discovery.
-Our target use is in science communication and the software has already proven to create engaging immersive experiences in large scale dome theaters.
-We have developed a tool useful for scientists, who want to present their work in a contextualized manner, and for the general public who wish to explore the most accurate and open data representation of celestial bodies.
+With science communication as a primary target the software has already proven to create engaging immersive experiences in large scale dome theaters.
+We have developed a tool useful for scientists, who want to present their work in a contextualized manner, and for the general public who wish to explore accurate and open data representation of celestial bodies.
 
 As future work we will further explore the seamless addition of detailed data from surface-based missions such as the Mars rovers. We will also add more data sources such as simulated data of abstract planetary properties.
 We also aim to add GIS tools to better aid scientists whereas the current main focus of the application is for public presentations.
 Intuitive and intelligent context dependent navigation models for multi-scale data is also an area with interesting challenges. 
 
 \acknowledgments{
-We would like to acknowledge the Swedish e-Science Research Center (SeRC) for their support of this work.
-Parts of this work were supported by NASA under award No NNX16AB93A, the Moore-Sloan Data Science Environment at New York University, NSF awards CNS-1229185, CCF-1533564, and CNS-1544753.
+We would like to acknowledge the Wallenberg Foundation, the Swedish e-Science Research Center (SeRC), and ELLIIT for their support of this work.
+Parts of this work were supported by Vetenskapsr\aa det under award VR-2015-05462, NASA under award No NNX16AB93A, the Moore-Sloan Data Science Environment at New York University, and NSF awards CNS-1229185, CCF-1533564, CNS-1544753, and CNS-1730396.
 The authors would like to thank Ryan Boller, Lucian Plesea, and the NASA GIBS team for their help, and Jonathas Costa for the implementation of atmospheric effects. We would also like to thank the anonymous reviewers who provided valuable comments to improve the final quality of the paper.
 }
 
